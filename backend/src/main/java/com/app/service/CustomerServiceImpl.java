@@ -40,4 +40,11 @@ public class CustomerServiceImpl implements CustomerService {
 		return "Customer deleted successfully...";
 	}
 
+	@Override
+	public Customer saveChangeDetails(Customer customer) {
+		// TODO Auto-generated method stub
+		
+		return customerRepo.save(customer);
+	}
+
 }

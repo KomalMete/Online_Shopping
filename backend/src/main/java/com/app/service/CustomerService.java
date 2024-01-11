@@ -15,6 +15,8 @@ public interface CustomerService {
 
 	String removeCustomer(int id);
 
+	Customer saveChangeDetails(Customer customer);
+
 	
 
 }

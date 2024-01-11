@@ -9,7 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -18,10 +20,13 @@ import lombok.ToString;
 @Getter
 @ToString
 @Table(name = "orders")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Orders {
 
 	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private int orderId;
+	
 }
