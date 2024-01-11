@@ -1,0 +1,39 @@
+package com.app.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Entity
+@Getter
+@Setter
+@ToString
+@AllArgsConstructor
+public class Address {
+
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int addressId;
+	
+	@NotEmpty(message = "city cannot be empty")
+	private String city;
+	
+	@NotEmpty(message = "state cannot be empty")
+	private String state;
+	
+	@NotEmpty(message = "zip cannot be empty")
+	private String zip;
+	
+	@NotEmpty(message = "country cannot be empty")
+	private String country;
+}
