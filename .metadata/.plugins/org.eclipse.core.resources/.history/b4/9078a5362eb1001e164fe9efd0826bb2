@@ -1,0 +1,9 @@
+package com.app.service;
+
+import com.app.entity.Customer;
+
+public interface OrderService {
+
+	Customer getCustomer(int id);
+
+}

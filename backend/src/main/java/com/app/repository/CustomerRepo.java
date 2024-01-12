@@ -8,4 +8,5 @@ import com.app.entity.Customer;
 @Repository
 public interface CustomerRepo extends JpaRepository<Customer, Integer> {
 
+	
 }

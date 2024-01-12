@@ -52,4 +52,8 @@ public class Orders {
                joinColumns = @JoinColumn(name = "order_id"),
                inverseJoinColumns = @JoinColumn(name = "product_id"))
     private List<Products> products;
+	
+	@ManyToOne
+	@JoinColumn(name = "customer_id")
+	private Customer customer;
 }

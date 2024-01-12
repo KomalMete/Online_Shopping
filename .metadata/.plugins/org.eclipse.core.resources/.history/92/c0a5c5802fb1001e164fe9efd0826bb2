@@ -1,0 +1,10 @@
+package com.app.service;
+
+import com.app.entity.Customer;
+import com.app.entity.Orders;
+
+public interface OrderService {
+
+	
+
+}
