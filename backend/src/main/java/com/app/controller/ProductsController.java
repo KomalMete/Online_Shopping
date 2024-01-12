@@ -65,4 +65,10 @@ public class ProductsController {
 	{
 		return productService.searchAllProductsByName(name);
 	}
+	
+	@GetMapping("/cat/{id}")
+	public List<Products> getByCategory(@PathVariable int id)
+	{
+		return productService.productsByCategory(id);
+	}
 }
