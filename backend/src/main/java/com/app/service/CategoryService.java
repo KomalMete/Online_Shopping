@@ -8,5 +8,7 @@ public interface CategoryService {
 
 	List<Category> getCategories();
 	Object addCategory(Category category);
+	String editCategory(Category category);
+	String removeCategory(int id);
 
 }

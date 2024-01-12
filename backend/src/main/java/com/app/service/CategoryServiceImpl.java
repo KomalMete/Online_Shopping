@@ -26,4 +26,18 @@ public class CategoryServiceImpl implements CategoryService {
 		return categoryRepo.save(category);
 	}
 
+	@Override
+	public String editCategory(Category category) {
+		// TODO Auto-generated method stub
+		categoryRepo.save(category);
+		return "category updated successfully";
+	}
+
+	@Override
+	public String removeCategory(int id) {
+		// TODO Auto-generated method stub
+		categoryRepo.deleteById(id);
+		return "Category deleted successfully...";
+	}
+
 }
