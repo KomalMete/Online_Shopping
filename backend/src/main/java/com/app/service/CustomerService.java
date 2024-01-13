@@ -3,6 +3,9 @@ package com.app.service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
+import com.app.dto.SigninRequest;
 import com.app.entity.Customer;
 
 
@@ -17,6 +20,8 @@ public interface CustomerService {
 	String removeCustomer(int id);
 
 	Customer saveChangeDetails(Customer customer);
+
+	String authenticate(@Valid SigninRequest request);
 
 	
 

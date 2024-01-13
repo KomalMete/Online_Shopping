@@ -3,9 +3,14 @@ package com.app.service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.custom_excceptions.ResourceNotFoundException;
+import com.app.dto.SigninRequest;
 import com.app.entity.Customer;
 import com.app.repository.CustomerRepo;
 
@@ -14,6 +19,9 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Autowired
 	private CustomerRepo customerRepo;
+	
+	@Autowired
+	private ModelMapper modelMapper;
 	
 	@Override
 	public List<Customer> allCustomers() {
@@ -46,6 +54,16 @@ public class CustomerServiceImpl implements CustomerService {
 		// TODO Auto-generated method stub
 		
 		return customerRepo.save(customer);
+	}
+
+	@Override
+	public String authenticate(@Valid SigninRequest request) {
+		Customer customer = customerRepo.findByCustomerEmailAndCustomerPassword
+				(request.getCustomerEmail(), request.getCustomerPassword())
+				.orElseThrow(() -> new ResourceNotFoundException("Bad Credentials , Invalid Login!!!!!!!!!!!!!"));
+		
+		return "Login successful...";
+		
 	}
 
 
