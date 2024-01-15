@@ -66,9 +66,15 @@ public class ProductsController {
 		return productService.searchAllProductsByName(name);
 	}
 	
-	@GetMapping("/cat/{id}")
-	public List<Products> getByCategory(@PathVariable int id)
+	@GetMapping("/cat/{name}")
+	public List<Products> getByCategory(@PathVariable String name)
 	{
-		return productService.productsByCategory(id);
+		return productService.productsByCategory(name);
+	}
+	
+	@GetMapping("{brandname}")
+	public List<Products> getByBrand(@PathVariable String brandname)
+	{
+		return productService.productsByBrand(brandname);
 	}
 }

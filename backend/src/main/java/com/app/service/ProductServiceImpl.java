@@ -61,10 +61,18 @@ public class ProductServiceImpl implements ProductService {
 
 
 	@Override
-	public List<Products> productsByCategory(int id) {
+	public List<Products> productsByCategory(String name) {
 		// TODO Auto-generated method stub
-		List<Products> product = productRepo.findByCategoryCategoryId(id);
+		List<Products> product = productRepo.findByCategoryCategoryName(name);
 		return product;
+	}
+
+
+	@Override
+	public List<Products> productsByBrand(String name) {
+		// TODO Auto-generated method stub
+		List<Products> products = productRepo.findByBrand(name);
+		return products;
 	}
 
 

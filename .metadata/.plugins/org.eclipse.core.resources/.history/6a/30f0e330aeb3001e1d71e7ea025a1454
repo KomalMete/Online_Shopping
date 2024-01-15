@@ -1,0 +1,23 @@
+package com.app.service;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.app.dto.LoginAdminRequest;
+import com.app.repository.AdminRepository;
+
+@Service
+public class AdminServiceImpl implements AdminService {
+
+	@Autowired
+	private AdminRepository adminRepo;
+	@Override
+	public String authenticateAdmin(@Valid LoginAdminRequest request) {
+		// TODO Auto-generated method stub
+		Admin admin = 
+		return null;
+	}
+
+}
