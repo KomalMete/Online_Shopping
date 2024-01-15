@@ -1,0 +1,7 @@
+package com.app.service;
+
+public interface AddressService {
+
+	List<Address> getAllAddressOfCustomer(String email);
+
+}
