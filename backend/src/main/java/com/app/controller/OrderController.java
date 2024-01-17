@@ -7,6 +7,7 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,7 +29,11 @@ public class OrderController {
 	@Autowired
 	private CustomerService customerService;
 	
-	
-	
+	@GetMapping
+	public ResponseEntity<?> getAllOrdersByCustomerId(Optional<Integer> customerId)
+	{
+		return new ResponseEntity<>(orderService.getAllOrdersOfCustomer(customerId),HttpStatus.OK);
+		
+	}
 	
 }

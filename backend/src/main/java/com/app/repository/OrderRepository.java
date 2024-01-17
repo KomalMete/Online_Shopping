@@ -1,6 +1,7 @@
 package com.app.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -14,5 +15,5 @@ import com.app.entity.Products;
 public interface OrderRepository extends JpaRepository<Orders, Integer> {
 
 	
-	List<Orders> findByCustomer(Customer customer);
+	List<Orders> findByCustomer(Optional<Customer> customer);
 }
