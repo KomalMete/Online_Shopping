@@ -8,7 +8,9 @@ import com.app.entity.Orders;
 
 public interface OrderService {
 
-	List<Orders> getAllOrdersOfCustomer(Optional<Integer> customerId);
+	List<Orders> getOrdersOfCustomer(int customerId);
+
+	
 
 	
 

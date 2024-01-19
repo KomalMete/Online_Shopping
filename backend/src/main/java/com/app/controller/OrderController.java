@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.entity.Customer;
@@ -29,11 +30,13 @@ public class OrderController {
 	@Autowired
 	private CustomerService customerService;
 	
-	@GetMapping
-	public ResponseEntity<?> getAllOrdersByCustomerId(Optional<Integer> customerId)
+	@GetMapping("{customerId}")
+	public ResponseEntity<?> getAllOrders(@PathVariable int customerId)
 	{
-		return new ResponseEntity<>(orderService.getAllOrdersOfCustomer(customerId),HttpStatus.OK);
 		
+		return new ResponseEntity<>(orderService.getOrdersOfCustomer(customerId),HttpStatus.OK);
 	}
+	
+	
 	
 }

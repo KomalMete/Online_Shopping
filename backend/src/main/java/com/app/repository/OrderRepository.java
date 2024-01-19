@@ -15,5 +15,5 @@ import com.app.entity.Products;
 public interface OrderRepository extends JpaRepository<Orders, Integer> {
 
 	
-	List<Orders> findByCustomer(Optional<Customer> customer);
+	List<Orders> findByCustomer(Optional<Customer> customer1);
 }

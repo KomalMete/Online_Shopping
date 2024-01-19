@@ -20,21 +20,18 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	private CustomerRepo customerRepo;
 
+
 	@Override
-	public List<Orders> getAllOrdersOfCustomer(Optional<Integer> customerId) {
+	public List<Orders> getOrdersOfCustomer(int customerId) {
 		// TODO Auto-generated method stub
-		
-		if(customerId.isPresent())
-		{
-			Optional<Customer> customer = customerRepo.findById(customerId.get());
-			return orderRepo.findByCustomer(customer);
-		}
-		else
-		{
-			return null;
-		}
-	
+		//String email = customer.getCustomerEmail();
+		Optional<Customer> customer1 = customerRepo.findById(customerId);
+		return orderRepo.findByCustomer(customer1);
 	}
+
+
+	
+
 
 	
 
