@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Register from './Component/Register';
 import {BrowserRouter,Route,Switch} from 'react-router-dom';
-
+import Login from './Component/Login';
 
 
 
@@ -10,7 +10,8 @@ import {BrowserRouter,Route,Switch} from 'react-router-dom';
 function App() {
   return (
     <div className="App">
-        <Register />
+        <Login />
+        
     </div>
   );
 }
