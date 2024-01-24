@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,6 +29,20 @@ public class CartController {
 	public ResponseEntity<?> removeFromCart(@PathVariable int id)
 	{
 		return new ResponseEntity<>(cartService.removeCartProduct(id), HttpStatus.OK);
+		
+	}
+	
+	@PutMapping("/increasequantity/{id}")
+	public ResponseEntity<?> increaseQuantity(@PathVariable int id)
+	{
+		return new ResponseEntity<>(cartService.increaseQuantity(id), HttpStatus.OK);
+		
+	}
+	
+	@PutMapping("/decreasequantity/{id}")
+	public ResponseEntity<?> decreaseQuantity(@PathVariable int id)
+	{
+		return new ResponseEntity<>(cartService.decreaseQuantity(id), HttpStatus.OK);
 		
 	}
 }

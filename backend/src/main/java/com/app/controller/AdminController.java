@@ -22,7 +22,7 @@ public class AdminController {
 	private AdminService adminService;
 	
 	@PostMapping("/login")
-	public ResponseEntity<?> customerLogin(@RequestBody @Valid LoginAdminRequest request)
+	public ResponseEntity<?> adminLogin(@RequestBody @Valid LoginAdminRequest request)
 	{
 		return new ResponseEntity<>(adminService.authenticateAdmin(request),HttpStatus.OK);
 		

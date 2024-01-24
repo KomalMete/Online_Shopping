@@ -25,7 +25,7 @@ const Register = () =>{
             };
             console.log(customer);
             axios
-            .post(url + "/register", customer)
+            .post(url + "/addcustomer", customer)
             .then((response) =>{
                 alert("registration successful...");
 

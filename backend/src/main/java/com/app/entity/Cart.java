@@ -38,6 +38,9 @@ public class Cart {
 	@Positive
 	private double rate;
 	
+	@Column
+	private int quantity;
+	
 	@ManyToOne
 	@JoinColumn(name = "customer_Id")
 	private Customer customer;

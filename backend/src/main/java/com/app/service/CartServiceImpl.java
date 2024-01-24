@@ -41,4 +41,40 @@ public class CartServiceImpl implements CartService {
 		return "product removed from cart successfully...";
 	}
 
+	@Override
+	public String increaseQuantity(int id) {
+		// TODO Auto-generated method stub
+		
+		Optional<Cart> cart = cartRepo.findById(id);
+		if(cart.isPresent())
+		{
+			Cart cart1 = cart.get();
+			cart1.setQuantity(cart1.getQuantity() + 1);
+			cartRepo.save(cart1);
+			return "quantity increased..";
+		}
+		else
+		{
+			return "failed to update..";
+		}
+		
+	}
+
+	@Override
+	public String decreaseQuantity(int id) {
+		// TODO Auto-generated method stub
+		Optional<Cart> cart = cartRepo.findById(id);
+		if(cart.isPresent())
+		{
+			Cart cart1 = cart.get();
+			cart1.setQuantity(cart1.getQuantity() - 1);
+			cartRepo.save(cart1);
+			return "quantity decrease..";
+		}
+		else
+		{
+			return "failed to update..";
+		}
+	}
+
 }

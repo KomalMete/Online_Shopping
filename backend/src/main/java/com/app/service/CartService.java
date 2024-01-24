@@ -10,4 +10,8 @@ public interface CartService {
 
 	String removeCartProduct(int id);
 
+	String increaseQuantity(int id);
+
+	String decreaseQuantity(int id);
+
 }
