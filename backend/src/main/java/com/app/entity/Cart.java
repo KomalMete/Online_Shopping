@@ -1,5 +1,7 @@
 package com.app.entity;
 
+import java.util.Optional;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,6 +26,10 @@ import lombok.ToString;
 
 public class Cart {
 
+	public Cart(int productId2, String productName2, int quantity2, double productPrice, Optional<Customer> cust1) {
+		// TODO Auto-generated constructor stub
+	}
+
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private int cartId;
@@ -36,7 +42,7 @@ public class Cart {
 	private String productName;
 	
 	@Positive
-	private double rate;
+	private int productPrice;
 	
 	@Column
 	private int quantity;

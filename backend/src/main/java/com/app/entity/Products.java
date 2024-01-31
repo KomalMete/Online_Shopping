@@ -36,7 +36,7 @@ public class Products {
 	private String productName;
 	
 	@Positive
-	private double productPrice;
+	private int productPrice;
 	
 	@Column(length = 20,name = "brand")
 	@NotEmpty(message = "brand name cannot be empty")

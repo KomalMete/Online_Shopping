@@ -8,6 +8,6 @@
     <typeInfo handle="=backend/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.app.service{CategoryService.java[CategoryService" modifiers="513" timestamp="1705067390731"/>
     <typeInfo handle="=backend/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.app.service{AddressService.java[AddressService" modifiers="513" timestamp="1705337169621"/>
     <typeInfo handle="=backend/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.app.service{AdminService.java[AdminService" modifiers="513" timestamp="1705326823017"/>
-    <typeInfo handle="=backend/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.app.service{CartService.java[CartService" modifiers="513" timestamp="1705679438273"/>
+    <typeInfo handle="=backend/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.app.service{CartService.java[CartService" modifiers="513" timestamp="1706089940623"/>
     <typeInfo handle="=backend/C:\/Users\/DELL\/.m2\/repository\/org\/springframework\/data\/spring-data-jpa\/2.7.12\/spring-data-jpa-2.7.12.jar=/maven.pomderived=/true=/=/maven.pomderived=/true=/=/maven.groupId=/org.springframework.data=/=/maven.artifactId=/spring-data-jpa=/=/maven.version=/2.7.12=/=/maven.scope=/compile=/&lt;org.springframework.data.jpa.repository(JpaRepository.class[JpaRepository" modifiers="1537" timestamp="1696882112762"/>
 </typeInfoHistroy>

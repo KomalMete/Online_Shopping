@@ -1,7 +1,0 @@
-package com.app.service;
-
-public interface CartService {
-
-	List<Cart> getCartProducts(int customerId);
-
-}

@@ -1,11 +1,17 @@
 package com.app.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.dto.CartDto;
+import com.app.entity.Cart;
+import com.app.entity.Customer;
 import com.app.entity.Products;
+import com.app.repository.CartRepository;
+import com.app.repository.CustomerRepo;
 import com.app.repository.ProductRepository;
 
 @Service
@@ -14,6 +20,13 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Autowired
 	private ProductRepository productRepo;
+	
+	@Autowired
+	private CustomerRepo customerRepo;
+	
+	@Autowired
+	private CartRepository cartRepo;
+	
 	@Override
 	public String addProduct(Products product) {
 		// TODO Auto-generated method stub
@@ -73,6 +86,24 @@ public class ProductServiceImpl implements ProductService {
 		// TODO Auto-generated method stub
 		List<Products> products = productRepo.findByBrand(name);
 		return products;
+	}
+
+
+	@Override
+	public String addToCart(CartDto product) {
+		// TODO Auto-generated method stub
+		
+		Products prod1 = getProductById(product.getProductId());
+		Customer cust1 = customerRepo.findById(product.getCustomerId()).orElseThrow(() -> new RuntimeException("Customer not found"));
+		
+		Cart cart = new Cart();
+		cart.setProductId(prod1.getProductId());
+		cart.setProductName(prod1.getProductName());
+		cart.setProductPrice(prod1.getProductPrice());
+		cart.setQuantity(prod1.getQuantity());
+		cart.setCustomer(cust1);
+		cartRepo.save(cart);
+		return "Product added successfully to cart..";
 	}
 
 

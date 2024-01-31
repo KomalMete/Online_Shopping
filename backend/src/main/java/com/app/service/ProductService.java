@@ -2,6 +2,7 @@ package com.app.service;
 
 import java.util.List;
 
+import com.app.dto.CartDto;
 import com.app.entity.Products;
 
 
@@ -22,5 +23,7 @@ public interface ProductService {
 	List<Products> productsByCategory(String name);
 
 	List<Products> productsByBrand(String name);
+
+	String addToCart(CartDto product);
 
 }
