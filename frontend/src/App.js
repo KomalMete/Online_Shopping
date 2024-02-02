@@ -5,12 +5,12 @@ import {BrowserRouter,Route,Switch} from 'react-router-dom';
 import Login from './Component/Login';
 import Header from './Component/Header';
 import Aboutus from './Component/Aboutus';
-
+import Contactus from './Component/Contactus';
 
 function App() {
   return (
     <div className="App">
-        <Aboutus />
+        <Contactus />
         
     </div>
   );
