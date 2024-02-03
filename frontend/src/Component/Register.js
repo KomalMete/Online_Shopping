@@ -45,7 +45,7 @@ const Register = () =>{
                 <div className="p-5 text-white fw-bold">
                 <h1>Registration</h1>
                 <div className="row">
-                    <div className="mb-3 col px-5">
+                    <div className="mb-3 col-6 px-5 text-center offset-3">
                         <label htmlFor="fname" className="form-label">
                          First Name
                         </label>
@@ -61,7 +61,7 @@ const Register = () =>{
                     </div>
 
                     <div className="row">
-                    <div className="mb-3 col px-5">
+                    <div className="mb-3 col-6 px-5 text-center offset-3">
                         <label htmlFor="lname" className="form-label">
                         Last Name
                         </label>
@@ -78,7 +78,7 @@ const Register = () =>{
                     </div>
 
                     <div className="row">
-                    <div className="mb-3 col px-5">
+                    <div className="mb-3 col-6 px-5 text-center offset-3">
                         <label htmlFor="email" className="form-label">
                             Email
                         </label>
@@ -95,7 +95,7 @@ const Register = () =>{
                     </div>
 
                     <div className="row">
-                    <div className="mb-3 col px-5">
+                    <div className="mb-3 col-6 px-5 text-center offset-3">
                         <label  htmlFor="password" className="form-label">
                         Password
                         </label>
@@ -111,7 +111,7 @@ const Register = () =>{
                     </div>
                     </div>
                     <div className="row">
-                    <div className="mb-3 col px-5">
+                    <div className="mb-3 col-6 px-5 text-center offset-3">
                         <label  htmlFor="contact" className="form-label">
                         Phone Number
                         </label>
@@ -127,6 +127,7 @@ const Register = () =>{
                     </div>
                     </div>
 
+                    <div className="mb-3 col-6 px-5 text-center offset-3">
                     <button
                         type="submit"
                         className="btn btn-dark"
@@ -135,6 +136,7 @@ const Register = () =>{
                     >
                     Register
                     </button>
+                    </div>
                 </div>
                 </div>
             </div>

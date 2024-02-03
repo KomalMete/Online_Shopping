@@ -2,55 +2,32 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-const Login =()=>{
-const [email, setEmail] = useState("");
-const [password, setPassword] = useState("");
 
-const navigate = useNavigate();
-
-const HandleLogin=()=>{
-    const user = {
-        email,
-        password
-    }
-}
-
+const Login =() => {
     return(
-       
-        <div className="container" style={{ width: "40%" }}>
-            <div className="card shadow bg-transparent mt-3 text-black font-weight-bold">
-                <div className="card-body">
-                    <div className="row">
-                        <div className="col-sm-8 mx-auto">
-                            <h4 className="text-center p-2">
-                                Login Form
-                            </h4>
-                            <form onSubmit={HandleLogin}>
-                                <div className="form-group form-row">
-                                    <label className="col-sm-4 form-control-label">Email_Id</label>
-                                    <div className="col-sm-8">
-                                        <input type="text" name="userid" value={email} onChange={HandleLogin} className="form-control" />
-                                        
-                                    </div>
+        <div className=" position-absolute top-50 start-50 translate-middle loginback">
+            <div className="position-absolute top-50 start-50 translate-middle loginform">
 
-                                </div>
-                                <div className="form-group form-row">
-                                    <label className="col-sm-4 form-control-label">Password</label>
-                                    <div className="col-sm-8 mb-5">
-                                        <input type="password" name="pwd" value={password} onChange={HandleLogin} className="form-control" />
-                                       
-                                    </div>
-                                </div>
-                                <button className="btn btn-primary float-right">Login Now</button>
-                            </form>
-                        </div>
+                <div className="p-5 text-whiteS">
+                    <h1>
+                        LOGIN
+                    </h1>
+                    <div className="mb-3">
+                        <label htmlFor="email" className="form-label">Email </label>
+                        <input type="email" className="form-control" id="email" aria-describedby="emailHelp" value={email} onChange={(e) => { setemail(e.target.value) }} />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="password" className="form-label">Password</label>
+                        <input type="password" className="form-control" id="password" value={password} onChange={(e) => { setpassword(e.target.value) }}/>
+                    </div>
+                    <button type="submit" className="btn btn-primary" onClick={HandleLogin}>Submit</button>
+                    <div>
+                        <Link className="btn btn-secondary m-3" to={"/register"}>REGISTER</Link>
+                        <Link className="m-3" to={"/forgotpassword"}>Forgot Password</Link>
                     </div>
                 </div>
-                
             </div>
         </div>
-        
- 
-    );
+    )
 }
 export default Login;
