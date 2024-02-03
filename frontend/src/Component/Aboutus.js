@@ -6,12 +6,12 @@ const Aboutus =()=>{
 
             <h1 className="m-3">About us</h1>
             <p className="m-3 p-5">
-            Welcome to <b>Online Shopping</b>, your ultimate destination for hassle-free online shopping! Founded in <b>2000</b>,
+            Welcome to <b>Shopify</b>, your ultimate destination for hassle-free online shopping! Founded in <b>2000</b>,
              we are dedicated to providing our customers with a seamless and enjoyable shopping experience from the comfort of their own homes.
             <hr></hr>
             <h3>Our Mission</h3>
 
-            At <b>Online Shopping</b>, our mission is simple: to make online shopping convenient, affordable, and enjoyable 
+            At <b>Shopify</b>, our mission is simple: to make online shopping convenient, affordable, and enjoyable 
             for everyone. We strive to offer a wide selection of high-quality products at competitive prices, along with exceptional customer 
             service to ensure your satisfaction with every purchase.
             <hr></hr>
@@ -34,7 +34,7 @@ const Aboutus =()=>{
              We value your feedback and welcome any questions, suggestions, or concerns you may have. Please don't hesitate to contact us via 
             email at <b>online@gmail.com</b> or through our customer support hotline at <b>1234567858</b>.
 
-            Thank you for choosing <b>Online Shopping</b> for your online shopping needs. <b>Happy Shopping...</b>
+            Thank you for choosing <b>Shopify</b> for your online shopping needs. <b>Happy Shopping...</b>
              <hr></hr>
             
 

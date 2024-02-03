@@ -26,7 +26,7 @@ const Login =() => {
     return(
         <div className=" position-absolute top-50 start-50 translate-middle loginback">
             <h1>Welcome To Shopify</h1>
-            <img src="./Images/Shopify-Logo.png"></img>
+           
             <div className="position-absolute top-50 start-50 translate-middle loginform">
                 
                 <div className="p-5 text-white">
