@@ -40,95 +40,108 @@ const Register = () =>{
         }
     }
     return(
-        <div>
-            <h1>Registration</h1>
-            <div>
-                <label>
-                    First Name
-                </label>
-                <input 
-                type="text"
-                className="form-control"
-                id="fname"
-                value={firstName}
-                onChange={(e) => {
-                    setFirstName(e.target.value);
-                }}
-                />
-                
-            </div>
+        <div className="position-absolute top-50 start-50 translate-middle regback">
+            <div className="container position-absolute top-50 start-50 translate-middle regform">
+                <div className="p-5 text-white fw-bold">
+                <h1>Registration</h1>
+                <div className="row">
+                    <div className="mb-3 col px-5">
+                        <label htmlFor="fname" className="form-label">
+                         First Name
+                        </label>
+                        <input 
+                        type="text"
+                        className="form-control"
+                        id="fname"
+                        value={firstName}
+                        onChange={(e) => {
+                            setFirstName(e.target.value);
+                        }}
+                        />
+                    </div>
 
-            <div>
-                <label>
-                    Last Name
-                </label>
-                <input 
-                type="text"
-                className="form-control"
-                id="lname"
-                value={lastName}
-                onChange={(e) => {
-                    setLastName(e.target.value);
-                }}
-                />
-                
-            </div>
+                    <div className="row">
+                    <div className="mb-3 col px-5">
+                        <label htmlFor="lname" className="form-label">
+                        Last Name
+                        </label>
+                            <input 
+                            type="text"
+                            className="form-control"
+                            id="lname"
+                            value={lastName}
+                            onChange={(e) => {
+                                setLastName(e.target.value);
+                            }}
+                        />
+                    </div>
+                    </div>
 
-            <div>
-                <label>
-                    Email
-                </label>
-                <input 
-                type="email"
-                className="form-control"
-                id="email"
-                value={email}
-                onChange={(e) => {
-                    setEmail(e.target.value);
-                }}
-                />
-                
-            </div>
+                    <div className="row">
+                    <div className="mb-3 col px-5">
+                        <label htmlFor="email" className="form-label">
+                            Email
+                        </label>
+                        <input 
+                        type="email"
+                        className="form-control"
+                        id="email"
+                        value={email}
+                        onChange={(e) => {
+                            setEmail(e.target.value);
+                        }}
+                        />
+                    </div>
+                    </div>
 
-            <div>
-                <label>
-                    Password
-                </label>
-                <input 
-                type="password"
-                className="form-control"
-                id="password"
-                value={password}
-                onChange={(e) => {
-                    setPassword(e.target.value);
-                }}
-                />
-                
-            </div>
+                    <div className="row">
+                    <div className="mb-3 col px-5">
+                        <label  htmlFor="password" className="form-label">
+                        Password
+                        </label>
+                            <input 
+                            type="password"
+                            className="form-control"
+                            id="password"
+                            value={password}
+                            onChange={(e) => {
+                                setPassword(e.target.value);
+                            }}
+                            />
+                    </div>
+                    </div>
+                    <div className="row">
+                    <div className="mb-3 col px-5">
+                        <label  htmlFor="contact" className="form-label">
+                        Phone Number
+                        </label>
+                            <input 
+                            type="text"
+                            className="form-control"
+                            id="contact"
+                            value={phoneno}
+                            onChange={(e) => {
+                            setPhoneno(e.target.value);
+                            }}
+                            />
+                    </div>
+                    </div>
 
-            <div>
-                <label>
-                    Phone Number
-                </label>
-                <input 
-                type="text"
-                className="form-control"
-                id="contact"
-                value={phoneno}
-                onChange={(e) => {
-                   setPhoneno(e.target.value);
-                }}
-                />
-                
+                    <button
+                        type="submit"
+                        className="btn btn-dark"
+                        onClick={handleSubmit}
+                        disabled={password.length >= 8 ? false : true}
+                    >
+                    Register
+                    </button>
+                </div>
+                </div>
             </div>
+            
+           
 
-            <button
-            type="submit"
-            onClick={handleSubmit}
-            disabled={password.length >= 8 ? false : true}
-            >
-                Register
-            </button>
+            
         </div>
     );
 }
