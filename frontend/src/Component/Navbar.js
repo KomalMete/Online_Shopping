@@ -9,7 +9,7 @@ const Navbar =() =>{
   <div class="container-fluid">
    
     <a class="navbar-brand" >SHOPIFY</a>
-     <div className="col-lg-2 col-md-3">
+     <div className="col-lg-1 col-md-2">
                 
     </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,6 +29,10 @@ const Navbar =() =>{
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/category">Category</a>
+        </li>
         
       </ul>
       
@@ -38,7 +42,7 @@ const Navbar =() =>{
         <input class="form-control me-6" type="search" placeholder="Search" aria-label="Search" style={{ width: '300px' }}/> &nbsp;&nbsp;
         <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
-    <div className="col-lg-2 col-md-4">
+    <div className="col-lg-2 col-md-3">
                 
     </div>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">

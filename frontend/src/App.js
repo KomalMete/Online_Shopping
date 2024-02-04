@@ -20,12 +20,12 @@ function App() {
       <Navbar />
       <div lassName="container-fluid p-2">
         <Routes>
-          <Route path="/1" element={<HomePage />}/>
+          <Route path="/" element={<HomePage />}/>
           <Route path="/register" element={<Register />}/>
           <Route path="/aboutus" element={<Aboutus />}/>
           <Route path="/login" element={<Login />}/>
           <Route path="/contactus" element={<Contactus />}/>
-          <Route path="/" element={<AddProduct />}/>
+          <Route path="/addproduct" element={<AddProduct />}/>
         </Routes>
       </div>
 
