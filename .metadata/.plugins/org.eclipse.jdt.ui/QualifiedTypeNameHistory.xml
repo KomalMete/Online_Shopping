@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="javax.persistence.OneToOne"/>
-    <fullyQualifiedTypeName name="javax.persistence.ManyToMany"/>
-    <fullyQualifiedTypeName name="javax.persistence.JoinTable"/>
     <fullyQualifiedTypeName name="com.app.service.OrderService"/>
     <fullyQualifiedTypeName name="com.app.repository.OrderRepository"/>
     <fullyQualifiedTypeName name="com.app.entity.Orders"/>
@@ -60,4 +57,7 @@
     <fullyQualifiedTypeName name="com.app.repository.CartRepository"/>
     <fullyQualifiedTypeName name="com.app.entity.Cart"/>
     <fullyQualifiedTypeName name="com.app.service.ProductService"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.CrossOrigin"/>
+    <fullyQualifiedTypeName name="org.springframework.web.servlet.config.annotation.WebMvcConfigurer"/>
+    <fullyQualifiedTypeName name="org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter"/>
 </qualifiedTypeNameHistroy>

@@ -18,8 +18,8 @@ function App() {
           <Route path="/register" element={<Register />}/>
           <Route path="/aboutus" element={<Aboutus />}/>
           <Route path="/login" element={<Login />}/>
-          <Route path="/" element={<Footer />}/>
-          <Route path="/v" element={<Navbar />}/>
+          <Route path="/footer" element={<Footer />}/>
+          <Route path="/" element={<Navbar />}/>
         </Routes>
       </div>
 
