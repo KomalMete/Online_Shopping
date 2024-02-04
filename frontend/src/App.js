@@ -10,6 +10,7 @@ import Footer from './Component/Footer';
 import Navbar from './Component/Navbar';
 import AllProducts from './Component/AllProducts';
 import HomePage from './Component/HomePage';
+import AddProduct from './Component/AddProduct';
 
 function App() {
   return (
@@ -19,16 +20,16 @@ function App() {
       <Navbar />
       <div lassName="container-fluid p-2">
         <Routes>
-        <Route path="/" element={<HomePage />}/>
+          <Route path="/1" element={<HomePage />}/>
           <Route path="/register" element={<Register />}/>
           <Route path="/aboutus" element={<Aboutus />}/>
           <Route path="/login" element={<Login />}/>
           <Route path="/contactus" element={<Contactus />}/>
-         
+          <Route path="/" element={<AddProduct />}/>
         </Routes>
       </div>
 
-     
+      <Footer />
       </BrowserRouter>
      
         

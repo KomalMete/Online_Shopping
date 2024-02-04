@@ -52,11 +52,11 @@ const Navbar =() =>{
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="/cart">cart</a>
+          <a class="nav-link active" aria-current="page" href="/cart">cart</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="/logout">Logout</a>
+          <a class="nav-link active" aria-current="page" href="/logout">Logout</a>
         </li>
         
       </ul>
