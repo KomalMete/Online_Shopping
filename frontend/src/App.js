@@ -12,7 +12,7 @@ import AllProducts from './Component/AllProducts';
 import HomePage from './Component/HomePage';
 import AddProduct from './Component/AddProduct';
 import Men from './Component/Men';
-
+import Electronics from './Component/Electronics';
 function App() {
   return (
     <div className="App">
@@ -27,7 +27,7 @@ function App() {
           <Route path="/login" element={<Login />}/>
           <Route path="/contactus" element={<Contactus />}/>
           <Route path="/addproduct" element={<AddProduct />}/>
-          
+          <Route path="/" element={<Electronics />}/>
         </Routes>
       </div>
 

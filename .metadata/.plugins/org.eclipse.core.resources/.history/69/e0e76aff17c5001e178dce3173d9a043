@@ -69,9 +69,9 @@ public class ProductsController {
 	}
 	
 	@GetMapping("/getproducts/{categoryname}")
-	public List<Products> getByCategory(@PathVariable String categoryname)
+	public List<Products> getByCategory(@PathVariable String name)
 	{
-		return productService.productsByCategory(categoryname);
+		return productService.productsByCategory(name);
 	}
 	
 	@GetMapping("{brandname}")

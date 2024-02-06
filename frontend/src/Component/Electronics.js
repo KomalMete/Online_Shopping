@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { url } from "./Common/constants";
 import axios from "axios";
 
-const Men = () =>{
+const Electronics = () =>{
 
-    const [menwear, setMenwear] = useState([]);
+    const [electronics, setElectronics] = useState([]);
     const [quantity, setQuantity] = useState(1);
 
     const navigate = useNavigate();
@@ -19,11 +19,11 @@ const Men = () =>{
     }, [])
 
     const init = () =>{
-        const category = "MEN";
+        const category = "Electronics" ;
         axios.get(url + "/products/getproducts/" + category)
         .then(response => {
             console.log('Printing product data', response.data);
-            setMenwear(response.data);
+            setElectronics(response.data);
         })
         .catch(error =>{
             console.log('Something went wrong', error);
@@ -36,7 +36,7 @@ const Men = () =>{
         <>
             <div className="container">
                 <div className="row g-3">
-                    {menwear.map((item) => (
+                    {electronics.map((item) => (
                         <div className="col-4">
                             <div className="card " key={item.product_id}>
                                 <div >
@@ -57,4 +57,4 @@ const Men = () =>{
         </>
     )
 }
-export default Men;
+export default Electronics;
