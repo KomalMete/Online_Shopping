@@ -19,11 +19,11 @@ import com.app.dto.CartDto;
 import com.app.entity.Products;
 import com.app.service.ProductService;
 
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/products")
 public class ProductsController {
-
+//http://localhost:3000
 	@Autowired
 	private ProductService productService;
 	
@@ -68,7 +68,7 @@ public class ProductsController {
 		return productService.searchAllProductsByName(name);
 	}
 	
-	@GetMapping("/cat/{name}")
+	@GetMapping("/getproducts/{categoryname}")
 	public List<Products> getByCategory(@PathVariable String name)
 	{
 		return productService.productsByCategory(name);

@@ -23,7 +23,7 @@ import com.app.service.CustomerService;
 
 @RestController
 @RequestMapping("/customers")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 public class CustomerController {
 
 	@Autowired

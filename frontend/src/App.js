@@ -11,6 +11,7 @@ import Navbar from './Component/Navbar';
 import AllProducts from './Component/AllProducts';
 import HomePage from './Component/HomePage';
 import AddProduct from './Component/AddProduct';
+import Men from './Component/Men';
 
 function App() {
   return (
@@ -20,12 +21,13 @@ function App() {
       <Navbar />
       <div lassName="container-fluid p-2">
         <Routes>
-          <Route path="/" element={<HomePage />}/>
+          <Route path="/home" element={<HomePage />}/>
           <Route path="/register" element={<Register />}/>
           <Route path="/aboutus" element={<Aboutus />}/>
           <Route path="/login" element={<Login />}/>
           <Route path="/contactus" element={<Contactus />}/>
           <Route path="/addproduct" element={<AddProduct />}/>
+          
         </Routes>
       </div>
 

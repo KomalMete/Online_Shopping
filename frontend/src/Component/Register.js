@@ -2,7 +2,8 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import './Register.css';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+
 import { url } from "./Common/constants";
 
 const Register = () =>{
@@ -20,16 +21,16 @@ const Register = () =>{
         if(password.length >= 8)
         {
             const customer ={
-                firstName,
-                lastName,
-                email,
-                password,
-                phoneno
+                customerFirstName: firstName,
+                customerLastName: lastName,
+                customerEmail: email,
+                customerPassword: password,
+                customerPhone: phoneno
             };
             console.log(customer);
-            axios.post( url + "/addcustomer", customer)
+            axios.post( url + "/customers/addcustomer", customer)
             .then(() =>{
-                navigate.push("/aboutus");
+               navigate("/aboutus");
             })
             .catch((error) => {
                 console.log("something wrong", error);
