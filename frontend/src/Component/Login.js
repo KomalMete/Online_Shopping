@@ -15,11 +15,16 @@ const Login =() => {
     const handleLogin=() =>{
 
         const customer = {
-            email,
-            password
+            customerEmail : email,
+            customerPassword : password
         };
-
-       
+        axios.post(url + "/customers/login" ,customer)
+        .then( () => {
+            navigate("/home")
+        })
+        .catch(error => {
+            console.log('Something went wrong', error);
+        })
 
     }
 

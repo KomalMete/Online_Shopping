@@ -29,24 +29,22 @@ public class Customer {
 	@Id
 	private int customerId;
 	
-	@Column(length = 6, name = "first_name")
-	@NotEmpty(message = "firstname cannot be empty")
+	@Column(name = "first_name")
+	
 	private String customerFirstName;
 	
-	@Column(length = 6,name = "last_name")
-	@NotEmpty(message = "lastname cannot be empty")
+	@Column(name = "last_name")
+	
 	private String customerLastName;
 	
-	@Column(length = 25,unique = true)
+	@Column(unique = true)
 	@Email
-	@NotEmpty(message = "email cannot be null")
+	
 	private String customerEmail;
 	
-	@Column(length = 9)
-	@NotEmpty(message = "password required")
+	
 	private String customerPassword;
 	
-	@Column(length = 10)
-	@Size(min = 10,max = 10)
+	
 	private String customerPhone;
 }

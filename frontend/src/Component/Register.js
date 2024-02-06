@@ -30,7 +30,7 @@ const Register = () =>{
             console.log(customer);
             axios.post( url + "/customers/addcustomer", customer)
             .then(() =>{
-               navigate("/aboutus");
+               navigate("/login");
             })
             .catch((error) => {
                 console.log("something wrong", error);
