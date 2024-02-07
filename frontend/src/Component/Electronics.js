@@ -35,17 +35,17 @@ const Electronics = () =>{
         
         <>
             <div className="container">
-                <div className="row g-3">
+                <div className="row g-3 p-5">
                     {electronics.map((item) => (
                         <div className="col-4">
-                            <div className="card " key={item.product_id}>
+                            <div className="card " key={item.productId}>
                                 <div >
 
                                     
                                     <div className="card-body">
-                                        <h5 className="card-title">{item.product_name}</h5>
+                                        <h5 className="card-title">{item.productName}</h5>
                                       
-                                        <h5>{item.product_price} Rs.</h5>
+                                        <h5>{item.productPrice} Rs.</h5>
                                     </div>
                                 </div>
                                 <button className="btn btn-primary" onClick={() => { HandleAddCart(item.id) }}>Add TO Cart</button>
