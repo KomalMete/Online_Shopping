@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { url } from "./Common/constants";
+import Mobile from '../Images/Mobile-1.jpg';
 import axios from "axios";
 
 const Electronics = () =>{
@@ -41,7 +42,7 @@ const Electronics = () =>{
                             <div className="card " key={item.productId}>
                                 <div >
 
-                                    
+                                <img src={Mobile} height={150}   className="card-img-top px-5" alt="..." />
                                     <div className="card-body">
                                         <h5 className="card-title">{item.productName}</h5>
                                       

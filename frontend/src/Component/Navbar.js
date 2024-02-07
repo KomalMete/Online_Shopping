@@ -1,8 +1,8 @@
 
 import React from "react";
-
+import { useNavigate } from "react-router-dom";
 const Navbar =() =>{
-
+ const navigate = useNavigate();
     return(
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -30,18 +30,15 @@ const Navbar =() =>{
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
 
-        
-
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Category
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="/men">MEN</a></li>
-            <li><a class="dropdown-item" href="/women">MEN</a></li>
-            <li><a class="dropdown-item" href="/electronics">ELECTRONICS</a></li>
-            <li><a class="dropdown-item" href="/homeandkitchen">HOMEandKITCHEN</a></li>
-            
+            <li><a class="dropdown-item" onClick={()=>{navigate("/Men")}}>Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
         

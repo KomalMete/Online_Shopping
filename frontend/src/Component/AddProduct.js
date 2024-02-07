@@ -18,15 +18,17 @@ const AddProduct = () =>{
 
     const HandleAddProduct = () =>{
         const product ={
-            brand,
-            name,
-            price,
-            quantity,
-            category
+          brand :brand,
+          productName :name,
+          productPrice :parseInt(price),
+          quantity :parseInt(quantity),
+          category :category
         };
-        axios.post(url + "/addproduct" ,product)
+        console.log(product);
+        axios.post(url + "/products/addproduct" ,product)
         .then((response) =>{
             console.log("product details", response.data);
+           
         })
         .catch((error) => {
             console.log("something went wrong", error);
