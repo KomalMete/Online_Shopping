@@ -34,8 +34,8 @@ const Electronics = () =>{
     return(
         
         <>
-            <div className="container">
-                <div className="row g-3 p-5">
+            <div className="container ">
+                <div className="row g-3 p-5 ">
                     {electronics.map((item) => (
                         <div className="col-4">
                             <div className="card " key={item.productId}>

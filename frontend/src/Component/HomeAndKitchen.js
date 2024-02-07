@@ -35,7 +35,7 @@ const HomeAndKitchen = () =>{
         
         <>
             <div className="container">
-                <div className="row g-3 p-5">
+                <div className="row g-3 p-5 bg-gray">
                     {homeandkitchen.map((item) => (
                         <div className="col-4">
                             <div className="card " key={item.productId}>
