@@ -57,7 +57,20 @@ const Contactus =()=>{
                 <button type="submit" class="btn btn-primary">Submit</button>
 
         </div>
+        <div>
+            
+            <h6>Need Help!</h6>
+            <h6>For Customer Support & Queries:</h6>
+            <h6>
+            Call us at Customer Care no. : 0000-000-0000
+            </h6>
+            <h6>
+            Email us at customercare@shopify.com
+            (Operational Timings: 08:00AM to 10:00PM)
+            </h6>
+        </div>
       </form>
+      
     )
     
 }

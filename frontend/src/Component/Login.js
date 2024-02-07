@@ -29,6 +29,7 @@ const Login =() => {
     }
 
     return(
+        <div className="container">
         <div className=" position-absolute top-50 start-50 translate-middle loginback">
             <h1>Welcome To Shopify</h1>
            
@@ -55,6 +56,7 @@ const Login =() => {
 
                 
             </div>
+        </div>
         </div>
     )
 }
