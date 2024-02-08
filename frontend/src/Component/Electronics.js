@@ -51,9 +51,9 @@ const Electronics = () =>{
                                 </div>
                                 <div>
                                 <button className="btn btn-primary btn-sm" onClick={() => { HandleAddCart(item.id) }}>Add To Cart</button>
-                                
+                               
                                 <span style={{ marginRight: '10px' }}></span> 
-                                <button className="btn btn-success btn-sm">View Product</button>
+                                <button className="btn btn-success btn-sm" onClick={() => navigate(`/getproduct/${item.productId}`)}>View Product</button>
                                 </div>
                                 
                             </div>

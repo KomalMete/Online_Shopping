@@ -31,11 +31,11 @@ function App() {
           <Route path="/login" element={<Login />}/>
           <Route path="/contactus" element={<Contactus />}/>
           <Route path="/addproduct" element={<AddProduct />}/>
-          <Route path="/electronics" element={<Electronics />}/>
+          <Route path="/" element={<Electronics />}/>
           <Route path="/men" element={<Men />}/>
           <Route path="/women" element={<Women />}/>
           <Route path="/homeandkitchen" element={<HomeAndKitchen />}/>
-          <Route path="/" element={<ProductDetails />}/>
+          <Route path="/add" element={<ProductDetails />}/>
         </Routes>
       </div>
 
