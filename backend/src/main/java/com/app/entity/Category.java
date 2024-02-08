@@ -28,4 +28,12 @@ public class Category {
 	@Column(length = 20)
 	@NotEmpty(message = "category name cannot be empty")
 	private String categoryName;
+	
+	public Category(String value) {
+        this.categoryName = value;
+    }
+	
+	public static Category valueOf(String value) {
+        return new Category(value);
+    }
 }

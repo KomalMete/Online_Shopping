@@ -13,6 +13,10 @@ import HomePage from './Component/HomePage';
 import AddProduct from './Component/AddProduct';
 import Men from './Component/Men';
 import Electronics from './Component/Electronics';
+import Women from './Component/Electronics';
+import ProductDetails from './Component/ProductDetails';
+import HomeAndKitchen from './Component/HomeAndKitchen';
+
 function App() {
   return (
     <div className="App">
@@ -26,8 +30,12 @@ function App() {
           <Route path="/aboutus" element={<Aboutus />}/>
           <Route path="/login" element={<Login />}/>
           <Route path="/contactus" element={<Contactus />}/>
-          <Route path="/" element={<AddProduct />}/>
+          <Route path="/addproduct" element={<AddProduct />}/>
           <Route path="/electronics" element={<Electronics />}/>
+          <Route path="/men" element={<Men />}/>
+          <Route path="/women" element={<Women />}/>
+          <Route path="/homeandkitchen" element={<HomeAndKitchen />}/>
+          <Route path="/" element={<ProductDetails />}/>
         </Routes>
       </div>
 

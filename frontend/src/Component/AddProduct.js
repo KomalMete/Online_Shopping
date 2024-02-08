@@ -27,7 +27,9 @@ const AddProduct = () =>{
         console.log(product);
         axios.post(url + "/products/addproduct" ,product)
         .then((response) =>{
+
             console.log("product details", response.data);
+            navigate("/home");
            
         })
         .catch((error) => {

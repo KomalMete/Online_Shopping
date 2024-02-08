@@ -49,7 +49,13 @@ const Electronics = () =>{
                                         <h5>{item.productPrice} Rs.</h5>
                                     </div>
                                 </div>
-                                <button className="btn btn-primary" onClick={() => { HandleAddCart(item.id) }}>Add TO Cart</button>
+                                <div>
+                                <button className="btn btn-primary btn-sm" onClick={() => { HandleAddCart(item.id) }}>Add To Cart</button>
+                                
+                                <span style={{ marginRight: '10px' }}></span> 
+                                <button className="btn btn-success btn-sm">View Product</button>
+                                </div>
+                                
                             </div>
                         </div>
                     ))}

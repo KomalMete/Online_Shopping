@@ -57,4 +57,4 @@ const HomeAndKitchen = () =>{
         </>
     )
 }
-export default Electronics;
+export default HomeAndKitchen;

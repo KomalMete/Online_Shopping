@@ -8,9 +8,11 @@ import org.springframework.stereotype.Service;
 
 import com.app.dto.CartDto;
 import com.app.entity.Cart;
+import com.app.entity.Category;
 import com.app.entity.Customer;
 import com.app.entity.Products;
 import com.app.repository.CartRepository;
+import com.app.repository.CategoryRepository;
 import com.app.repository.CustomerRepo;
 import com.app.repository.ProductRepository;
 
@@ -27,9 +29,27 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private CartRepository cartRepo;
 	
+	@Autowired
+	private CategoryRepository categoryRepo;
+	
 	@Override
 	public String addProduct(Products product) {
 		// TODO Auto-generated method stub
+		 Category category = product.getCategory();
+		 
+		 Category existingCategory = categoryRepo.findByCategoryName(category.getCategoryName());
+
+		    
+		    if (existingCategory == null)
+		    {
+		        category = categoryRepo.save(category);
+		    } else
+		    {
+		     
+		        category = existingCategory;
+		    }
+
+	        product.setCategory(category);
 		productRepo.save(product);
 		return "product saved";
 	}

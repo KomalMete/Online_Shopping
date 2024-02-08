@@ -31,15 +31,15 @@ public class Products {
 	@Id
 	private int productId;
 	
-	@Column(name = "productName")
-
+	@Column(length = 20,name = "productName")
+	@NotEmpty(message = "product name cannot be empty")
 	private String productName;
 	
 	@Positive
 	private int productPrice;
 	
-	@Column(name = "brand")
-	
+	@Column(length = 20,name = "brand")
+	@NotEmpty(message = "brand name cannot be empty")
 	private String brand;
 	
 	@Positive
