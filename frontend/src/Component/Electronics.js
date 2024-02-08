@@ -12,9 +12,25 @@ const Electronics = () =>{
 
     const navigate = useNavigate();
 
-    const HandleAddCart =() =>{
+    const HandleAddCart =(productId) =>{
 
+        const itemToCart = {
+            productId,
+            quantity,
+            customerId 
+        }
+
+        axios.post(url + "/products/addtocart" ,itemToCart)
+        .then((response) =>{
+            console.log("data" , response.data);
+            alert("product added to cart..");
+        })
+        .catch(error => {
+            console.log("something went wrong",error);
+        })
     }
+
+
     useEffect(() =>{
         init();
     }, [])
@@ -50,7 +66,7 @@ const Electronics = () =>{
                                     </div>
                                 </div>
                                 <div>
-                                <button className="btn btn-primary btn-sm" onClick={() => { HandleAddCart(item.id) }}>Add To Cart</button>
+                                <button className="btn btn-primary btn-sm" onClick={() => { HandleAddCart(item.productId) }}>Add To Cart</button>
                                
                                 <span style={{ marginRight: '10px' }}></span> 
                                 <button className="btn btn-success btn-sm" onClick={() => navigate(`/getproduct/${item.productId}`)}>View Product</button>
