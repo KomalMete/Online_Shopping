@@ -17,7 +17,7 @@ const Electronics = () =>{
         const itemToCart = {
             productId,
             quantity,
-            customerId 
+           
         }
 
         axios.post(url + "/products/addtocart" ,itemToCart)
