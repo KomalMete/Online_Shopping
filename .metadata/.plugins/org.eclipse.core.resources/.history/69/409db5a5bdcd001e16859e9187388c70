@@ -1,0 +1,6 @@
+package com.app.filters;
+
+@Component
+public class JwtRequestFilters {
+
+}

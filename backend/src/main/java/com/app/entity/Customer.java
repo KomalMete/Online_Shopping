@@ -49,4 +49,6 @@ public class Customer {
 	@Column(length = 10)
 	@Size(min = 10,max = 10)
 	private String customerPhone;
+
+	
 }
