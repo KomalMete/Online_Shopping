@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.LoginAdminRequest;
-import com.app.dto.SigninRequest;
+import com.app.dto.LoginDTO;
 import com.app.service.AdminService;
 
 @RestController

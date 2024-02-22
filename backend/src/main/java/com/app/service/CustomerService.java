@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
-import com.app.dto.SigninRequest;
+import com.app.dto.LoginDTO;
 import com.app.entity.Customer;
 
 
@@ -21,7 +21,7 @@ public interface CustomerService {
 
 	Customer saveChangeDetails(Customer customer);
 
-	String authenticate(@Valid SigninRequest request);
+	String authenticate(@Valid LoginDTO request);
 
 	
 

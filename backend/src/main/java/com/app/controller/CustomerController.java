@@ -7,6 +7,9 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +20,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.dto.SigninRequest;
+import com.app.dto.AuthenticationResponse;
+import com.app.dto.LoginDTO;
 import com.app.entity.Customer;
+import com.app.jwtUtils.JwtUtils;
 import com.app.service.CustomerService;
 
 @RestController
@@ -28,6 +33,13 @@ public class CustomerController {
 
 	@Autowired
 	private CustomerService customerService;
+	
+	@Autowired
+	private AuthenticationManager authManager;
+	
+	
+	@Autowired
+	private JwtUtils jwtUtils;
 	
 	@GetMapping
 	public List<Customer> getAllCustomers()
@@ -61,11 +73,17 @@ public class CustomerController {
 	}
 	
 	@PostMapping("/login")
-	public ResponseEntity<?> customerLogin(@RequestBody @Valid SigninRequest request)
-	{
-		return new ResponseEntity<>(customerService.authenticate(request),HttpStatus.OK);
-		
+	public ResponseEntity<?> authenticateUser(@RequestBody LoginDTO request) {
+		System.out.println("in auth " + request);
+		try {
+			Authentication authenticate = authManager.authenticate
+			(new UsernamePasswordAuthenticationToken(request.getCustomerEmail(), request.getCustomerPassword()));			
+			System.out.println("auth success " + authenticate);
+			return ResponseEntity.ok(new AuthenticationResponse(jwtUtils.generateJwtToken(authenticate),authenticate.getAuthorities().toString()));
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("User authentication Failed", e);
+		}
 	}
-	
 	
 }

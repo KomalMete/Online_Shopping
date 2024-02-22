@@ -50,5 +50,8 @@ public class Customer {
 	@Size(min = 10,max = 10)
 	private String customerPhone;
 
+	@Column(length = 20)
+	@NotEmpty
+	private String role;
 	
 }

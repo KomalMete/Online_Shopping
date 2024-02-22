@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.custom_excceptions.ResourceNotFoundException;
-import com.app.dto.SigninRequest;
+import com.app.dto.LoginDTO;
 import com.app.entity.Customer;
 import com.app.repository.CustomerRepo;
 
@@ -57,7 +57,7 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public String authenticate(@Valid SigninRequest request) {
+	public String authenticate(@Valid LoginDTO request) {
 		Customer customer = customerRepo.findByCustomerEmailAndCustomerPassword
 				(request.getCustomerEmail(), request.getCustomerPassword())
 				.orElseThrow(() -> new ResourceNotFoundException("Bad Credentials , Invalid Login!!!!!!!!!!!!!"));
