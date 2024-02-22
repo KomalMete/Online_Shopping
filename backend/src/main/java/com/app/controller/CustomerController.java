@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,16 +42,27 @@ public class CustomerController {
 	@Autowired
 	private JwtUtils jwtUtils;
 	
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
+	
 	@GetMapping
 	public List<Customer> getAllCustomers()
 	{
 		return customerService.allCustomers();
 	}
 	
-	@PostMapping("/addcustomer")
-	public Customer addCustomer(@RequestBody Customer customer)
-	{
-		return customerService.saveCustomer(customer);
+	@PostMapping("/register")
+	public ResponseEntity<?> userRegistration(@RequestBody Customer request) {
+		try {
+		System.out.println("in user reg " + request);
+//		return ResponseEntity.ok(userServices.registerUser(request));
+		Customer u=customerService.saveCustomer(request);
+		if(u!=null)
+			return new ResponseEntity<>(u,HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}catch(Exception e) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
 	}
 	
 	@GetMapping("/searchcustomer/{id}")

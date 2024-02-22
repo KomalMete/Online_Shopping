@@ -23,9 +23,14 @@ public class JwtRequestFilters extends OncePerRequestFilter{
 
 	@Autowired
 	private JwtUtils jwtUtils;
-	// auto wire dao based user details service
-	@Autowired
-	private UserDetailsService userDetailsService;
+	
+
+    private final UserDetailsService userDetailsService;
+
+    @Autowired
+    public JwtRequestFilters(UserDetailsService userDetailsService) {
+        this.userDetailsService = userDetailsService;
+    }
 
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)

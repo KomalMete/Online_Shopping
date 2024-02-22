@@ -5,6 +5,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.app.entity.Customer;
@@ -15,6 +16,19 @@ public class UserServiceImpl implements UserDetailsService {
 
 	@Autowired
 	private CustomerRepo customerRepo;
+	
+
+    private final PasswordEncoder encoder;
+
+    @Autowired
+    public UserServiceImpl(PasswordEncoder encoder) {
+        this.encoder = encoder;
+    }
+    
+	public UserServiceImpl(CustomerRepo customerRepo) {
+        this.encoder = null;
+		this.customerRepo = customerRepo;
+    }
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

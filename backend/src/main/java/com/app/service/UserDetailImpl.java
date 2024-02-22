@@ -2,14 +2,13 @@ package com.app.service;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import com.app.entity.Customer;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
-
-import com.app.entity.Customer;
-
 
 
 
@@ -19,11 +18,12 @@ public class UserDetailImpl implements UserDetails {
 	
 	private static final long serialVersionUID = 1L;
 
-	private Customer user;
+	
+	private final Customer customer;
 	
 	public UserDetailImpl(Customer user) {
 		super();
-		this.user=user;
+		this.customer=user;
 	}
 
 	@Override
@@ -31,7 +31,7 @@ public class UserDetailImpl implements UserDetails {
 		
 		
 		List<GrantedAuthority> grantedAuthorities=new ArrayList<GrantedAuthority>();
-		grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_"+this.user.getRole().toUpperCase()));
+		grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_"+this.customer.getRole().toUpperCase()));
 //		System.out.println("inside details impl "+grantedAuthorities.get(0).getAuthority());
 		return grantedAuthorities;
 	}
@@ -39,13 +39,13 @@ public class UserDetailImpl implements UserDetails {
 	@Override
 	public String getPassword() {
 		
-		return this.user.getCustomerPassword();
+		return this.customer.getCustomerPassword();
 	}
 
 	@Override
 	public String getUsername() {
 		
-		return this.user.getCustomerEmail();
+		return this.customer.getCustomerEmail();
 	}
 	
 	@Override
@@ -73,7 +73,7 @@ public class UserDetailImpl implements UserDetails {
 	}
 	
 	 public Customer getUserDetails() {
-	        return user;
+	        return customer;
 	    }
 
 }
