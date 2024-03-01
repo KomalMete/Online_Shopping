@@ -22,15 +22,11 @@ import com.app.jwtUtils.JwtUtils;
 public class JwtRequestFilters extends OncePerRequestFilter{
 
 	@Autowired
-	private JwtUtils jwtUtils;
+    private UserDetailsService userDetailsService;
 	
+	@Autowired
+    private JwtUtils jwtUtils;
 
-    private final UserDetailsService userDetailsService;
-
-    @Autowired
-    public JwtRequestFilters(UserDetailsService userDetailsService) {
-        this.userDetailsService = userDetailsService;
-    }
 
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)

@@ -19,7 +19,7 @@ public class UserDetailImpl implements UserDetails {
 	private static final long serialVersionUID = 1L;
 
 	
-	private final Customer customer;
+	private Customer customer;
 	
 	public UserDetailImpl(Customer user) {
 		super();

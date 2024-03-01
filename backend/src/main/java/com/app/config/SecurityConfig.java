@@ -8,43 +8,48 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.app.entity.Customer;
 import com.app.filters.JwtRequestFilters;
+import com.app.repository.CustomerRepo;
 
-@SuppressWarnings("deprecation")
+
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
 	
+	@Autowired
+	public UserDetailsService userDetailsService;
 	
 	@Autowired
-	UserDetailsService userDetailsService;
-	
-	private final JwtRequestFilters jwtFilter;
+	private JwtRequestFilters jwtFilter;
 
-    @Autowired
-    public SecurityConfig(JwtRequestFilters jwtFilter) {
-        this.jwtFilter = jwtFilter;
-    }
 	
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userDetailsService);
-	}
-	
-	@Override
+    @Override
 	@Bean
 	public AuthenticationManager authenticationManagerBean() throws Exception {
 
 		return super.authenticationManagerBean();
 	}
+    
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(userDetailsService);
+	}
+	
+	
 	
 	@Bean
-	public BCryptPasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -56,7 +61,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 //		.antMatchers(HttpMethod.OPTIONS, "/**").permitAll();
 		.antMatchers(HttpMethod.POST, "/customers/login").permitAll()
         .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-        .anyRequest().authenticated();
+        .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+		.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+		 http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+        
 		 
 		    
 		

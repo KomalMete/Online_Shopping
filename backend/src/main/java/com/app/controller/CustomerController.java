@@ -42,8 +42,6 @@ public class CustomerController {
 	@Autowired
 	private JwtUtils jwtUtils;
 	
-	@Autowired
-	BCryptPasswordEncoder passwordEncoder;
 	
 	@GetMapping
 	public List<Customer> getAllCustomers()
