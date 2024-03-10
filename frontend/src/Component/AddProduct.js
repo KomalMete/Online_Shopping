@@ -13,6 +13,7 @@ const AddProduct = () =>{
     const [price, setPrice] = useState("");
     const [quantity, setQuantity] = useState("");
     const [category, setcategory] = useState("");
+    const [imageUel, setImageUrl] = useState("");
 
     const navigate = useNavigate();
 

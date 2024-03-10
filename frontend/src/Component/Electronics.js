@@ -11,15 +11,15 @@ const Electronics = () =>{
     const [quantity, setQuantity] = useState(1);
 
     const navigate = useNavigate();
-
+    const token = JSON.parse(localStorage.getItem("jwttoken"));
     const HandleAddCart =(productId) =>{
-
-        const itemToCart = {
-            productId,
-            quantity,
-           
-        }
-
+        // if(token){
+            const itemToCart = {
+                productId,
+                quantity,
+               
+            }
+            
         axios.post(url + "/products/addtocart" ,itemToCart)
         .then((response) =>{
             console.log("data" , response.data);
@@ -28,6 +28,12 @@ const Electronics = () =>{
         .catch(error => {
             console.log("something went wrong",error);
         })
+        // }
+        // else{
+        //     alert("please login..")
+        // }
+        
+
     }
 
 
