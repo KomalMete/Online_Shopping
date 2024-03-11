@@ -16,6 +16,7 @@ import Electronics from './Component/Electronics';
 import Women from './Component/Electronics';
 import ProductDetails from './Component/ProductDetails';
 import HomeAndKitchen from './Component/HomeAndKitchen';
+import Cart from './Component/Cart';
 
 function App() {
   return (
@@ -31,11 +32,13 @@ function App() {
           <Route path="/login" element={<Login />}/>
           <Route path="/contactus" element={<Contactus />}/>
           <Route path="/add" element={<AddProduct />}/>
-          <Route path="/electronics" element={<Electronics />}/>
+          <Route path="/" element={<Electronics />}/>
           <Route path="/men" element={<Men />}/>
           <Route path="/women" element={<Women />}/>
           <Route path="/homeandkitchen" element={<HomeAndKitchen />}/>
-          <Route path="/" element={<ProductDetails />}/>
+          <Route path="/ab" element={<ProductDetails />}/>
+          <Route exact path='/products/getproduct/:productId' element={<ProductDetails />}></Route>
+          <Route path="/cart" element={<Cart />}/>
         </Routes>
       </div>
 

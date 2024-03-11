@@ -13,7 +13,7 @@ const Electronics = () =>{
     const navigate = useNavigate();
     const token = JSON.parse(localStorage.getItem("jwttoken"));
     const HandleAddCart =(productId) =>{
-        // if(token){
+            // if(token){
             const itemToCart = {
                 productId,
                 quantity,
@@ -75,7 +75,7 @@ const Electronics = () =>{
                                 <button className="btn btn-primary btn-sm" onClick={() => { HandleAddCart(item.productId) }}>Add To Cart</button>
                                
                                 <span style={{ marginRight: '10px' }}></span> 
-                                <button className="btn btn-success btn-sm" onClick={() => navigate(`/getproduct/${item.productId}`)}>View Product</button>
+                                <button className="btn btn-success btn-sm" onClick={() => navigate(`/products/getproduct/${item.productId}`)}>View Product</button>
                                 </div>
                                 
                             </div>
