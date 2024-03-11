@@ -19,8 +19,20 @@ const Login =() => {
             customerPassword : password
         };
         axios.post(url + "/customers/login" ,customer)
-        .then( () => {
-            navigate("/home")
+        .then( Response => {
+            if(Response.data.jwt&&Response.status == 200){
+                localStorage.setItem('jwttoken',JSON.stringify(Response.data.jwt));
+                if(Response.data.role=='[ROLE_CUSTOMER]')
+                {
+                    console.log(customer.customerEmail);
+                navigate("/");
+                }
+                
+                else if(Response.data.role=='[ROLE_VENDOR]')
+                navigate("/vendorhome")
+                else if(Response.data.role=='[ROLE_ADMIN]')
+                  console.log("in admin")
+              } 
         })
         .catch(error => {
             console.log('Something went wrong', error);
