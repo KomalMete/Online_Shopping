@@ -7,7 +7,39 @@ import { useParams } from "react-router-dom";
 const ProductDetails = () =>{
     const { productId } = useParams();
     const [item, setitem] = useState("")
-    
+    const [quantity, setQuantity] = useState(1);
+
+    const user = {
+        token: JSON.parse(localStorage.getItem("jwttoken")),
+    };
+
+    const HandleAddCart =(productId, user) =>
+    {
+             if(user && user.token){
+            const itemToCart = {
+                productId,
+                quantity,
+               
+            }
+            
+        axios.post(url + "/products/addtocart" ,itemToCart, { headers: { "authorization": `Bearer ${user.token}` } })
+        .then((response) =>{
+            console.log("data" , response.data);
+
+            alert("product added to cart..");
+        })
+        .catch(error => {
+            console.log("something went wrong",error);
+        })
+        }
+         else{
+             alert("please login..")
+        }
+        
+
+    }
+
+
     const [productQuantity, setquantity] = useState(1);
     useEffect(() => {
         init();
@@ -39,7 +71,7 @@ const ProductDetails = () =>{
                 </div>
             </div>
             <div className="my-3">
-                <button className="btn btn-success">Add To Cart</button>
+                <button className="btn btn-success" onClick={() => { HandleAddCart(item.productId, user) }}>Add To Cart</button>
                 <span style={{ marginRight: '10px' }}></span> 
                 <button className="btn btn-success">Buy Now</button>
             </div>
