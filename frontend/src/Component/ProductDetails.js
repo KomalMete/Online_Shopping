@@ -56,7 +56,7 @@ const ProductDetails = () =>{
         });
     }
     return(
-        <div className="container">
+        <div className="fw-bold border">
             <div className="my-3">
                 <strong >{item.productName}</strong>
             </div>

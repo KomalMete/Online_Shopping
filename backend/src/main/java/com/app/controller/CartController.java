@@ -1,8 +1,11 @@
 package com.app.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,15 +17,16 @@ import com.app.service.CartService;
 
 @RestController
 @RequestMapping("/cart")
+@CrossOrigin(origins = "*")
 public class CartController {
 
 	@Autowired
 	private CartService cartService;
 	
-	@GetMapping("getcartproducts/{customerId}")
-	public ResponseEntity<?> getCartProducts(@PathVariable int customerId)
+	@GetMapping("getcartproducts")
+	public ResponseEntity<?> getCartProducts(HttpServletRequest request)
 	{
-		return new ResponseEntity<>(cartService.getCartProducts(customerId), HttpStatus.OK);
+		return new ResponseEntity<>(cartService.getCartProducts(request.getUserPrincipal().getName()), HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/deleteproductfromcart/{id}")

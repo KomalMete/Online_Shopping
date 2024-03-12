@@ -6,7 +6,7 @@ import com.app.entity.Cart;
 
 public interface CartService {
 
-	List<Cart> getCartProducts(int customerId);
+	List<Cart> getCartProducts(String name);
 
 	String removeCartProduct(int id);
 

@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.custom_excceptions.ResourceNotFoundException;
 import com.app.entity.Cart;
 import com.app.entity.Customer;
 import com.app.entity.Products;
@@ -27,9 +28,9 @@ public class CartServiceImpl implements CartService {
 	private ProductRepository productRepo;
 	
 	@Override
-	public List<Cart> getCartProducts(int customerId) {
+	public List<Cart> getCartProducts(String name) {
 		// TODO Auto-generated method stub
-		Optional<Customer> customer = customerRepo.findById(customerId);
+		Customer customer = customerRepo.findByCustomerEmail(name);
 		
 		return cartRepo.findByCustomer(customer);
 	}
@@ -37,7 +38,18 @@ public class CartServiceImpl implements CartService {
 	@Override
 	public String removeCartProduct(int id) {
 		// TODO Auto-generated method stub
-		cartRepo.deleteById(id);
+		//Products prod = productRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Product not found"));
+		
+		//cartRepo.delete(prod);
+		
+		Cart cartItem = cartRepo.findByProductId(id);
+		
+		if (cartItem == null) {
+            throw new ResourceNotFoundException("Product not found in the cart");
+        }
+        
+        // Delete the cart item from the database
+		cartRepo.delete(cartItem);
 		return "product removed from cart successfully...";
 	}
 

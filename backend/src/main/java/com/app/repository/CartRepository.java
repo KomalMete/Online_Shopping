@@ -8,9 +8,12 @@ import org.springframework.stereotype.Repository;
 
 import com.app.entity.Cart;
 import com.app.entity.Customer;
+import com.app.entity.Products;
 
 @Repository
 public interface CartRepository extends JpaRepository<Cart, Integer> {
 
-	List<Cart> findByCustomer(Optional<Customer> customer);
+	List<Cart> findByCustomer(Customer customer);
+	
+	Cart findByProductId(int in);
 }
