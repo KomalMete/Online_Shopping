@@ -12,6 +12,35 @@ const Cart =()=>{
         token: JSON.parse(localStorage.getItem("jwttoken")),
     };
 
+    const HandleIncreaseQuantity=(id) =>{
+        axios.put(url + "/cart/increasequantity/" + id, 
+        {
+            headers: { authorization: `Bearer ${user.token}` },
+        })
+      .then((response) =>{
+        console.log("Printing product data", response.data);
+        init(user);
+      })
+      .catch((error) => {
+        console.log("Something went wrong", error);
+      });
+    
+    }
+
+    const HandleDecreaseQuantity=(id) =>{
+        axios.put(url + "/cart/decreasequantity/" + id, 
+        {
+            headers: { authorization: `Bearer ${user.token}` },
+        })
+      .then((response) =>{
+        console.log("Printing product data", response.data);
+        init(user);
+      })
+      .catch((error) => {
+        console.log("Something went wrong", error);
+      });
+    
+    }
 
     const HandleRemove =(productId)=>{
         axios.delete(url + "/cart/deleteproductfromcart/" + productId, 
@@ -66,7 +95,21 @@ const Cart =()=>{
                     </div>
 
                     <div className="col-2">
-                        hello
+                        <button 
+                            onClick={() => {
+                                HandleIncreaseQuantity(item.productId)
+                            }}
+                        >
+                            +
+                        </button>
+                        {item.quantity}
+                        <button
+                            onClick={() => {
+                                HandleDecreaseQuantity(item.productId)
+                            }}
+                        >
+                            -
+                        </button>
                     </div>
 
                     <div className="col-2">
@@ -86,6 +129,12 @@ const Cart =()=>{
                     </div>
                 </div>
             ))}
+
+            <div>
+                <button className="btn btn-success fw-bold my-3">
+                    Place Order
+                </button>
+            </div>
         </div>
     )
 }
