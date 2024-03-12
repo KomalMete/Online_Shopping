@@ -110,12 +110,12 @@ public class ProductServiceImpl implements ProductService {
 
 
 	@Override
-	public String addToCart(CartDto product) {
+	public String addToCart(CartDto product,String name) {
 		// TODO Auto-generated method stub
 		
 		Products prod1 = getProductById(product.getProductId());
-		Customer cust1 = customerRepo.findById(product.getCustomerId()).orElseThrow(() -> new RuntimeException("Customer not found"));
-		
+		//Customer cust1 = customerRepo.findByCustomerEmail(name).orElseThrow();
+		Customer cust1 = customerRepo.findByCustomerEmail(name);
 		Cart cart = new Cart();
 		cart.setProductId(prod1.getProductId());
 		cart.setProductName(prod1.getProductName());

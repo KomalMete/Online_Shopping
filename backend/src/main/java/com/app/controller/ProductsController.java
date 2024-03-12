@@ -2,6 +2,8 @@ package com.app.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -81,9 +83,9 @@ public class ProductsController {
 	}
 	
 	@PostMapping("/addtocart")
-	public ResponseEntity<?> addToCart(@RequestBody CartDto product)
+	public ResponseEntity<?> addToCart(@RequestBody CartDto product, HttpServletRequest request)
 	{
 		System.out.println("in add");
-		return new ResponseEntity<>(productService.addToCart(product), HttpStatus.OK);
+		return new ResponseEntity<>(productService.addToCart(product,request.getUserPrincipal().getName()), HttpStatus.OK);
 	}
 }

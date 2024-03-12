@@ -11,27 +11,34 @@ const Electronics = () =>{
     const [quantity, setQuantity] = useState(1);
 
     const navigate = useNavigate();
-    const token = JSON.parse(localStorage.getItem("jwttoken"));
-    const HandleAddCart =(productId) =>{
-            // if(token){
+    //const token = JSON.parse(localStorage.getItem("jwttoken"));
+
+    const user = {
+        token: JSON.parse(localStorage.getItem("jwttoken")),
+    };
+
+    const HandleAddCart =(productId, user) =>
+    {
+             if(user && user.token){
             const itemToCart = {
                 productId,
                 quantity,
                
             }
             
-        axios.post(url + "/products/addtocart" ,itemToCart)
+        axios.post(url + "/products/addtocart" ,itemToCart, { headers: { "authorization": `Bearer ${user.token}` } })
         .then((response) =>{
             console.log("data" , response.data);
+
             alert("product added to cart..");
         })
         .catch(error => {
             console.log("something went wrong",error);
         })
-        // }
-        // else{
-        //     alert("please login..")
-        // }
+        }
+         else{
+             alert("please login..")
+        }
         
 
     }
@@ -43,7 +50,7 @@ const Electronics = () =>{
 
     const init = () =>{
         const category = "Electronics" ;
-        axios.get(url + "/products/getproducts/" + category)
+        axios.get(url + "/products/getproducts/" + category, { headers: { "authorization": `Bearer ${user.token}` } })
         .then(response => {
             console.log('Printing product data', response.data);
             setElectronics(response.data);
@@ -72,7 +79,7 @@ const Electronics = () =>{
                                     </div>
                                 </div>
                                 <div>
-                                <button className="btn btn-primary btn-sm" onClick={() => { HandleAddCart(item.productId) }}>Add To Cart</button>
+                                <button className="btn btn-primary btn-sm" onClick={() => { HandleAddCart(item.productId, user) }}>Add To Cart</button>
                                
                                 <span style={{ marginRight: '10px' }}></span> 
                                 <button className="btn btn-success btn-sm" onClick={() => navigate(`/products/getproduct/${item.productId}`)}>View Product</button>

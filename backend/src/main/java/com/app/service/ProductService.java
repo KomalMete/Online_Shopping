@@ -24,6 +24,6 @@ public interface ProductService {
 
 	List<Products> productsByBrand(String name);
 
-	String addToCart(CartDto product);
+	String addToCart(CartDto product, String name);
 
 }
