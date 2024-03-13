@@ -86,7 +86,12 @@ const Cart =()=>{
     return(
         <div className="container">
             <div>
-                <button className=" text-end btn btn-primary m-5 fw-bold ">
+                <button 
+                className=" text-end btn btn-primary m-5 fw-bold "
+                onClick={() => {
+                    navigate("/order")
+                }}
+                >
                     My Orders
                 </button>
             </div>

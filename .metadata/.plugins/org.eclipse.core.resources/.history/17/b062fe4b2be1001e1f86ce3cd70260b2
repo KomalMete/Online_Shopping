@@ -27,7 +27,7 @@ public class OrderServiceImpl implements OrderService {
 		//String email = customer.getCustomerEmail();
 		//Optional<Customer> customer1 = customerRepo.findById(customerId);
 		
-		return orderRepo.findByCustomer(customerRepo.findByCustomerEmail(name));
+		return orderRepo.findByCustomer(customerRepo.findByCustomerEmail(name).);
 	}
 
 

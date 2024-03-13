@@ -25,9 +25,8 @@ public class OrderServiceImpl implements OrderService {
 	public List<Orders> getOrdersOfCustomer(String name) {
 		// TODO Auto-generated method stub
 		//String email = customer.getCustomerEmail();
-		//Optional<Customer> customer1 = customerRepo.findById(customerId);
-		
-		return orderRepo.findByCustomer(customerRepo.findByCustomerEmail(name));
+		Optional<Customer> customer1 = customerRepo.findById(customerId);
+		return orderRepo.findByCustomer(customer1);
 	}
 
 

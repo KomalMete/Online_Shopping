@@ -30,11 +30,11 @@ public class OrderController {
 	@Autowired
 	private CustomerService customerService;
 	
-	@GetMapping("/getorders")
-	public ResponseEntity<?> getAllOrders(HttpServletRequest request)
+	@GetMapping("{customerId}")
+	public ResponseEntity<?> getAllOrders(@PathVariable int customerId)
 	{
 		
-		return new ResponseEntity<>(orderService.getOrdersOfCustomer(request.getUserPrincipal().getName()),HttpStatus.OK);
+		return new ResponseEntity<>(orderService.getOrdersOfCustomer(customerId),HttpStatus.OK);
 	}
 	
 	

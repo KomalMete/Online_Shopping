@@ -31,10 +31,10 @@ public class OrderController {
 	private CustomerService customerService;
 	
 	@GetMapping("/getorders")
-	public ResponseEntity<?> getAllOrders(HttpServletRequest request)
+	public ResponseEntity<?> getAllOrders(@PathVariable int customerId)
 	{
 		
-		return new ResponseEntity<>(orderService.getOrdersOfCustomer(request.getUserPrincipal().getName()),HttpStatus.OK);
+		return new ResponseEntity<>(orderService.getOrdersOfCustomer(customerId),HttpStatus.OK);
 	}
 	
 	
