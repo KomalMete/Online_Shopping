@@ -17,6 +17,7 @@ import Women from './Component/Electronics';
 import ProductDetails from './Component/ProductDetails';
 import HomeAndKitchen from './Component/HomeAndKitchen';
 import Cart from './Component/Cart';
+import AddressAndPayment from './Component/AddressAndPayment';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           <Route path="/ab" element={<ProductDetails />}/>
           <Route exact path='/products/getproduct/:productId' element={<ProductDetails />}></Route>
           <Route path="/cart" element={<Cart />}/>
+          <Route path="/deliveryaddress" element={<AddressAndPayment />}/>
         </Routes>
       </div>
 

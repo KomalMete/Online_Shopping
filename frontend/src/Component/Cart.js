@@ -8,6 +8,9 @@ const Cart =()=>{
     const { customerId } = useParams();
     const [items, setitems] = useState([]);
 
+    const navigate = useNavigate();
+
+    let total = 0;
     const user = {
         token: JSON.parse(localStorage.getItem("jwttoken")),
     };
@@ -57,6 +60,12 @@ const Cart =()=>{
 
     }
 
+    const HandleOrder =() =>{
+        localStorage.setItem("Total", total);
+        console.log(localStorage.getItem("Total"));
+        navigate("/deliveryaddress");
+    }
+
     useEffect(() =>{
         init(user);
     }, [])
@@ -76,6 +85,11 @@ const Cart =()=>{
 
     return(
         <div className="container">
+            <div>
+                <button className=" text-end btn btn-primary m-5 fw-bold ">
+                    My Orders
+                </button>
+            </div>
             <div className="row g-1 my-3 fw-bold border">
                 <div className="col-1"></div>
                 <div className="col-2">Title</div>
@@ -119,6 +133,10 @@ const Cart =()=>{
                     <div className="col-2">
                         {parseInt(item.quantity) * parseInt(item.productPrice)}
                     </div>
+                    
+                    <div className="col-1" hidden>
+                        {total = total + parseInt(item.quantity) * parseInt(item.productPrice)}
+                    </div>
 
                     <div className="col-2">
                         <button onClick={() =>{
@@ -129,9 +147,11 @@ const Cart =()=>{
                     </div>
                 </div>
             ))}
-
+            <div className=" text-end fw-bold m-5 fs-5">
+                Total : {total}
+            </div>
             <div>
-                <button className="btn btn-success fw-bold my-3">
+                <button className="btn btn-success fw-bold my-3" onClick={HandleOrder}>
                     Place Order
                 </button>
             </div>
