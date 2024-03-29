@@ -19,6 +19,7 @@ import HomeAndKitchen from './Component/HomeAndKitchen';
 import Cart from './Component/Cart';
 import AddressAndPayment from './Component/AddressAndPayment';
 import Order from './Component/Order';
+import Products from './Component/Products';
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
           <Route path="/cart" element={<Cart />}/>
           <Route path="/deliveryaddress" element={<AddressAndPayment />}/>
           <Route path="/order" element={<Order />}/>
+          <Route exact path='/products/searchproduct/:pname' element={<Products />}></Route>
         </Routes>
       </div>
 
