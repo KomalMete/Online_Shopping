@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Register from './Component/Register';
-import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, BrowserRouter , useLocation } from 'react-router-dom';
 import Login from './Component/Login';
 import Header from './Component/Header';
 import Aboutus from './Component/Aboutus';
@@ -20,21 +20,27 @@ import Cart from './Component/Cart';
 import AddressAndPayment from './Component/AddressAndPayment';
 import Order from './Component/Order';
 import Products from './Component/Products';
+import AdminHome from './Component/AdminHome';
+import AdminNavbar from './Component/AdminNavbar';
 
 function App() {
+   
   return (
     <div className="App">
 
       <BrowserRouter>
-      <Navbar />
+      
+      <Navbar/> 
+   
       <div lassName="container-fluid p-2">
         <Routes>
           <Route path="/" element={<HomePage />}/>
+          <Route path="/adminhome" element={<AdminHome />} />
           <Route path="/register" element={<Register />}/>
           <Route path="/aboutus" element={<Aboutus />}/>
           <Route path="/login" element={<Login />}/>
           <Route path="/contactus" element={<Contactus />}/>
-          <Route path="/add" element={<AddProduct />}/>
+          <Route path="/addproduct" element={<AddProduct />}/>
           <Route path="/electronics" element={<Electronics />}/>
           <Route path="/men" element={<Men />}/>
           <Route path="/women" element={<Women />}/>
@@ -47,10 +53,9 @@ function App() {
           <Route exact path='/products/searchproduct/:pname' element={<Products />}></Route>
         </Routes>
       </div>
-
-      <Footer />
       </BrowserRouter>
-     
+      
+      <Footer />
         
     </div>
   );

@@ -46,7 +46,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		String encodedPassword = passwordEncoder.encode(customer.getCustomerPassword());
 		UserDetails userDetails = User.withUsername(customer.getCustomerEmail())
 				.password(encodedPassword)
-                .roles(customer.getRole()) // You can set roles based on your application's logic
+                .roles("CUSTOMER") // You can set roles based on your application's logic
                 .build();
         
         return userDetails;

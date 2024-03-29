@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { NavDropdown } from 'react-bootstrap';
 
 
-const Navbar =() =>{
+const AdminNavbar =() =>{
   const [pname, setname] = useState("")
  const navigate = useNavigate();
     return(
@@ -41,12 +41,12 @@ const Navbar =() =>{
 
        
 
-        <NavDropdown title="Category" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/men">MEN</NavDropdown.Item>
-              <NavDropdown.Item href="/women">WOMEN</NavDropdown.Item>
-              <NavDropdown.Item href="/electronics">ELECTRONICS</NavDropdown.Item>
-              <NavDropdown.Item href="/homeandkitchen">HOME & KITCHEN</NavDropdown.Item>
-        </NavDropdown>
+            <NavDropdown title="Category" id="basic-nav-dropdown">
+                <NavDropdown.Item href="/men">MEN</NavDropdown.Item>
+                <NavDropdown.Item href="/women">WOMEN</NavDropdown.Item>
+                <NavDropdown.Item href="/electronics">ELECTRONICS</NavDropdown.Item>
+                <NavDropdown.Item href="/homeandkitchen">HOME & KITCHEN</NavDropdown.Item>
+            </NavDropdown>
 
         
       </ul>
@@ -58,10 +58,14 @@ const Navbar =() =>{
         <button class="btn btn-outline-success" type="submit" onClick={()=>{navigate(`/products/searchproduct/${pname}`)}}>Search</button>
     </form>
     <div className="col-lg-2 col-md-3">
-                
+              
     </div>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/adminhome">Products</a>
+        </li>
+
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/login">login</a>
         </li>
@@ -86,4 +90,4 @@ const Navbar =() =>{
         
     );
 }
-export default Navbar;
+export default AdminNavbar;

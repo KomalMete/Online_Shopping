@@ -4,39 +4,73 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { url } from "./Common/constants";
 import "./Login.css"
+import Alert from 'react-bootstrap/Alert';
 
 const Login =() => {
 
     const [email, setEmail] = useState();
     const [password , setpassword] = useState();
+    const [error, setError] = useState("");
 
     const navigate = useNavigate();
 
     const handleLogin=() =>{
+        console.log("handleLogin function called");
+
+        if (!email || !password) {
+            console.log("Email and password are required.");
+            //setError("Email and password are required.");
+            //alert("Email and password are required.");
+           
+            return;
+        }
+        
 
         const customer = {
             customerEmail : email,
             customerPassword : password
         };
+
+        
         axios.post(url + "/customers/login" ,customer)
         .then( Response => {
-            if(Response.data.jwt&&Response.status == 200){
-                localStorage.setItem('jwttoken',JSON.stringify(Response.data.jwt));
-                if(Response.data.role=='[ROLE_CUSTOMER]')
+            if(Response.data.jwt && Response.status == 200)
                 {
-                    console.log(customer.customerEmail);
-                navigate("/");
+                    localStorage.setItem('jwttoken',JSON.stringify(Response.data.jwt));
+                    if(Response.data.role ==='[ROLE_customer]')
+                    {
+                        console.log(customer.customerEmail);
+                        console.log(customer.role);
+                        console.log("Customer login successful");
+                        navigate("/");
+                    }
+                    else if(Response.data.role ==='[ROLE_admin]')
+                    {
+                        console.log("Admin login successful");
+                        console.log("admin details",customer.customerEmail);
+                        navigate("/adminhome")
+                    }
+                    else
+                    {
+                        console.log("Invalid role received from backend:", Response.data.role);
+                        setError("Invalid role received from backend: " + Response.data.role);
+                    }
+                } 
+                else
+                {
+                    console.log("Invalid response from backend:", Response);
+                    setError("Something went wrong: " + error);
                 }
-                
-                else if(Response.data.role=='[ROLE_VENDOR]')
-                navigate("/vendorhome")
-                else if(Response.data.role=='[ROLE_ADMIN]')
-                  console.log("in admin")
-              } 
         })
         .catch(error => {
-            console.log('Something went wrong', error);
-        })
+            if (error.response && error.response.status === 403) {
+                setError("Invalid email or password. Please try again.");
+            } else {
+                console.log('Something went wrong', error);
+                setError('Something went wrong. Please try again.');
+            }
+        });
+        
 
     }
 
@@ -59,10 +93,12 @@ const Login =() => {
                         <label htmlFor="password" className="form-label">Password</label>
                         <input type="password" className="form-control" id="password" value={password} onChange={(e) => { setpassword(e.target.value) }}/>
                     </div>
-                    <button type="submit" className="btn btn-dark" onClick={handleLogin}>Submit</button>
-                    <div>
+                    <button type="submit" className="btn btn-dark m-3" onClick={handleLogin}>Submit</button>
+                    
+                    <div className="row">
+                        <h6>Not Yet Customer?</h6>
                         <Link className="btn btn-success m-3" to={"/register"}>REGISTER</Link>
-                        <Link className="m-3" to={"/forgotpassword"}>Forgot Password</Link>
+                        
                     </div>
                 </div>
 
