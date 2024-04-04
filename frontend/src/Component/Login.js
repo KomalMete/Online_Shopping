@@ -59,7 +59,7 @@ const Login =() => {
                 else
                 {
                     console.log("Invalid response from backend:", Response);
-                    setError("Something went wrong: " + error);
+                    setError("Invalid email or password. Please try again.");
                 }
         })
         .catch(error => {
@@ -85,6 +85,7 @@ const Login =() => {
                     <h1>
                         LOGIN
                     </h1>
+                    {error && <Alert variant="danger">{error}</Alert>}
                     <div className="mb-3">
                         <label htmlFor="email" className="form-label">Email </label>
                         <input type="email" className="form-control" id="email" aria-describedby="emailHelp" value={email} onChange={(e) => { setEmail(e.target.value) }} />

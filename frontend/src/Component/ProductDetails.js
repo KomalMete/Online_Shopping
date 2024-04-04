@@ -8,7 +8,7 @@ const ProductDetails = () =>{
     const { productId } = useParams();
     const [item, setitem] = useState("")
     const [quantity, setQuantity] = useState(1);
-
+    
     const user = {
         token: JSON.parse(localStorage.getItem("jwttoken")),
     };
@@ -40,7 +40,7 @@ const ProductDetails = () =>{
     }
 
 
-    const [productQuantity, setquantity] = useState(1);
+  
     useEffect(() => {
         init();
     }, [])
@@ -67,7 +67,7 @@ const ProductDetails = () =>{
             <div className="row">
                 <div>Quantity</div>
                 <div className="my-3">
-                    <input type="number" id="quantity" value={productQuantity} onChange={(e) => {setquantity(e.target.value)}}></input>
+                    <input type="number" id="quantity" value={quantity} onChange={(e) => {setQuantity(e.target.value)}}></input>
                 </div>
             </div>
             <div className="my-3">

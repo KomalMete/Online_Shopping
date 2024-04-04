@@ -29,7 +29,7 @@ const Electronics = () =>{
         axios.post(url + "/products/addtocart" ,itemToCart, { headers: { "authorization": `Bearer ${user.token}` } })
         .then((response) =>{
             console.log("data" , response.data);
-            setQuantity=1;
+            setQuantity(1);
             alert("product added to cart..");
         })
         .catch(error => {

@@ -2,6 +2,7 @@ package com.app.entity;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -42,7 +43,7 @@ public class Orders {
 	
 	@OneToOne
 	@JoinColumn(name = "payment_id")
-	private Payments payment;
+	private Payments paymentId ;
 	
 	@ManyToOne
 	@JoinColumn(name ="address_id")

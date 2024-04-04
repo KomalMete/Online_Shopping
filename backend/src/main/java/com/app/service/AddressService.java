@@ -8,6 +8,6 @@ public interface AddressService {
 
 	List<Address> getAllAddressOfCustomer(String email);
 
-	String addCustomerAddress(Address address);
+	String addCustomerAddress(Address address, String name);
 
 }

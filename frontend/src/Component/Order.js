@@ -20,6 +20,7 @@ const Order =()=>{
           })
         .then((response) =>{
             console.log("orders");
+            //setitems(response.data)
         })
         .catch((error) => {
             console.log("Something went wrong", error);

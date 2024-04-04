@@ -10,6 +10,8 @@ public interface OrderService {
 
 	List<Orders> getOrdersOfCustomer(String name);
 
+	String placeOrder(Orders order, int addressId, String name);
+
 	
 
 	

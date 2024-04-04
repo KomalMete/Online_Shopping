@@ -29,13 +29,15 @@ public class AddressServiceImpl implements AddressService {
 	}
 
 	@Override
-	public String addCustomerAddress(Address address) {
+	public String addCustomerAddress(Address address, String name) {
 		// TODO Auto-generated method stub
-		if (address != null && address.getCustomer() != null && address.getCustomer().getCustomerId() != 0)
+		if (address != null)
 		{
-			Customer customer = customerRepo.findById(address.getCustomer().getCustomerId())
-					.orElseThrow(()-> new ResourceNotFoundException("Customer not found.."));
-			address.setCustomer(customer);
+//			Customer customer = customerRepo.findById(address.getCustomer().getCustomerId())
+//					.orElseThrow(()-> new ResourceNotFoundException("Customer not found.."));
+			
+			Customer cust1 = customerRepo.findByCustomerEmail(name);
+			address.setCustomer(cust1);
 			addressRepo.save(address);
 			return "Address added successfully for customer..."+ address.getCustomer().getCustomerId();
 		}

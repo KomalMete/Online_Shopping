@@ -37,20 +37,22 @@ public class CartServiceImpl implements CartService {
 
 	@Override
 	public String removeCartProduct(int id) {
-		// TODO Auto-generated method stub
-		//Products prod = productRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Product not found"));
 		
-		//cartRepo.delete(prod);
 		
-		Cart cartItem = cartRepo.findByProductId(id);
+		Optional<Cart> cartItem = cartRepo.findById(id);
 		
-		if (cartItem == null) {
-            throw new ResourceNotFoundException("Product not found in the cart");
+		if (cartItem.isPresent()) {
+            //throw new ResourceNotFoundException("Product not found in the cart");
+			 Cart cartItem1 = cartItem.get();
+			 cartRepo.delete(cartItem1);
+			  return "Product removed from cart successfully...";
         }
-        
-        // Delete the cart item from the database
-		cartRepo.delete(cartItem);
-		return "product removed from cart successfully...";
+		else
+		{
+			throw new ResourceNotFoundException("Product not found in the cart");
+			
+		}
+       
 	}
 
 	@Override

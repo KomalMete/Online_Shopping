@@ -2,6 +2,8 @@ package com.app.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,10 +31,10 @@ public class AddressController {
 	}
 	
 	@PostMapping("/addaddress")
-	public ResponseEntity<?> addAddress(@RequestBody Address address)
+	public ResponseEntity<?> addAddress(@RequestBody Address address, HttpServletRequest request)
 	{
 		//not done
-		return new ResponseEntity<>(addressService.addCustomerAddress(address), HttpStatus.OK);
+		return new ResponseEntity<>(addressService.addCustomerAddress(address,request.getUserPrincipal().getName()), HttpStatus.OK);
 		
 	}
 }

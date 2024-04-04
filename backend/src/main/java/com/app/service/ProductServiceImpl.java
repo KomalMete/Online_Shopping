@@ -120,7 +120,7 @@ public class ProductServiceImpl implements ProductService {
 		cart.setProductId(prod1.getProductId());
 		cart.setProductName(prod1.getProductName());
 		cart.setProductPrice(prod1.getProductPrice());
-		cart.setQuantity(prod1.getQuantity());
+		cart.setQuantity(product.getQuantity());
 		cart.setCustomer(cust1);
 		cartRepo.save(cart);
 		return "Product added successfully to cart..";

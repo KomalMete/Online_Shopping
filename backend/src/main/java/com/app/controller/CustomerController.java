@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.AuthenticationResponse;
 import com.app.dto.LoginDTO;
+import com.app.dto.Response;
 import com.app.entity.Customer;
 import com.app.jwtUtils.JwtUtils;
 import com.app.service.CustomerService;
@@ -92,7 +93,8 @@ public class CustomerController {
 			return ResponseEntity.ok(new AuthenticationResponse(jwtUtils.generateJwtToken(authenticate),authenticate.getAuthorities().toString()));
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new RuntimeException("User authentication Failed", e);
+			//throw new RuntimeException("User authentication Failed", e);
+			return Response.error("Invalid username or password");
 		}
 	}
 	

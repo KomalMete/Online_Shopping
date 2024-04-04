@@ -4,47 +4,80 @@ import { url } from "./Common/constants";
 
 const AddressAndPayment = () =>{
 
-    const user = {
-        token: JSON.parse(localStorage.getItem("jwttoken")),
-    };
+    
 
     const [fullName, setfullName] = useState("");
-    const [contact, setcontact] = useState("");
     const [city, setcity] = useState("");
     const [state, setstate] = useState("");
-    const [pincode, setpincode] = useState("");
+    const [zip, setzip] = useState("");
+    const [country, setcountry] = useState("");
     const [fullnameErr, setFullNmaeError] = useState("");
     const [phoneNumberErr, setPhoneNumberError] = useState("");
     const [pincodeErr, setPincodeError] = useState("");
 
+    const user = {
+        token: JSON.parse(localStorage.getItem("jwttoken")),
+    };
+
     const resetFormData = () => {
         setFullNmaeError("");
-        setPhoneNumberError("");
+        
         setPincodeError("");
       };
 
-    const HandlePayment =() =>{
-        if(fullName !== "" && contact.length !==9 && pincode !== "")
+    const HandlePayment =(user) =>{
+        if(fullName !== "" &&  zip !== "")
         {
-            resetFormData();
-            const order = {
+            //resetFormData();
+            const address = {
                 fullName,
-                contact,
                 city,
                 state,
-                pincode
+                zip,
+                country
             }
-            alert("payment successfull..")
+            axios.post(url +"/address/addaddress" ,address,{
+                headers: { authorization: `Bearer ${user.token}` },
+            })
+            .then((response) =>{
+                console.log("Printing product data", response.data);
+                placeOrder();
+              })
+              .catch((error) => {
+                console.log("Something went wrong", error);
+              });
+
+
+              
+            
         }
         else {
             fullName === "" && setFullNmaeError("*Enter valid Name");
             //   console;
-            contact.length <= 9
-              ? setPhoneNumberError("*Enter a 10 digit number")
-              : contact === "" && setPhoneNumberError("*Enter valid phone number");
-            pincode === "" && setPincodeError("*Enter valid pincode");
+            zip === "" && setPincodeError("*Enter valid pincode");
+            console.error("Form validation error: Name and zip code are required.");
           }
     }
+
+    const placeOrder = (orderId,addressId)=>{
+
+        const data = {
+            orderId,
+            addressId: addressId ? addressId : null // Use null if addressId is not provided
+        };
+
+        axios.post(url + "/orders/orderplace",data, {
+            headers: { authorization: `Bearer ${user.token}` },
+        } )
+        .then((response) =>{
+            console.log("Printing order data", response.data);
+            
+          })
+          .catch((error) => {
+            console.log("order not place", error);
+          });
+    }
+
 
     return(
         <div className="container m-5">
@@ -69,11 +102,11 @@ const AddressAndPayment = () =>{
                 <input 
                 type="text" 
                 className="form-control"
-                id="contact"
-                placeholder="Phone Number"
-                value={contact}
+                id="country"
+                placeholder="country"
+                value={country}
                 onChange={(e) => {
-                    setcontact(e.target.value);
+                    setcountry(e.target.value);
                 }}
                 />
                 </div>
@@ -112,11 +145,11 @@ const AddressAndPayment = () =>{
                 <input 
                 type="text" 
                 className="form-control"
-                id="pincode"
-                placeholder="Pincode"
-                value={pincode}
+                id="zip"
+                placeholder="zip"
+                value={zip}
                 onChange={(e) => {
-                    setpincode(e.target.value);
+                    setzip(e.target.value);
                 }}
                 />
                 </div>
@@ -126,7 +159,7 @@ const AddressAndPayment = () =>{
             <button
                 type="submit"
                 className="btn btn-primary m-5"
-                onClick={HandlePayment}
+                onClick={() => HandlePayment(user)}
             >
                 Proceed Payment : {localStorage.getItem("Total")}
             </button>

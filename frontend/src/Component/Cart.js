@@ -45,8 +45,8 @@ const Cart =()=>{
     
     }
 
-    const HandleRemove =(productId)=>{
-        axios.delete(url + "/cart/deleteproductfromcart/" + productId, 
+    const HandleRemove =(id)=>{
+        axios.delete(url + "/cart/deleteproductfromcart/" + id, 
             {
                 headers: { authorization: `Bearer ${user.token}` },
             })
@@ -116,7 +116,7 @@ const Cart =()=>{
                     <div className="col-2">
                         <button 
                             onClick={() => {
-                                HandleIncreaseQuantity(item.productId)
+                                HandleIncreaseQuantity(item.cartId)
                             }}
                         >
                             +
@@ -124,7 +124,7 @@ const Cart =()=>{
                         {item.quantity}
                         <button
                             onClick={() => {
-                                HandleDecreaseQuantity(item.productId)
+                                HandleDecreaseQuantity(item.cartId)
                             }}
                         >
                             -
@@ -140,12 +140,13 @@ const Cart =()=>{
                     </div>
                     
                     <div className="col-1" hidden>
-                        {total = total + parseInt(item.quantity) * parseInt(item.productPrice)}
+                        {total = total + parseInt(item.quantity) * parseInt(item.productPrice)} 
+                        
                     </div>
 
                     <div className="col-2">
                         <button onClick={() =>{
-                            HandleRemove(item.productId)
+                            HandleRemove(item.cartId)
                         }}>
                             Remove
                         </button>
