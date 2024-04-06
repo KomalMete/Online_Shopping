@@ -13,6 +13,7 @@ const Register = () =>{
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [phoneno, setPhoneno] = useState("");
+    const [role, setrole] = useState("");
 
     const navigate = useNavigate();
 
@@ -25,10 +26,11 @@ const Register = () =>{
                 customerLastName: lastName,
                 customerEmail: email,
                 customerPassword: password,
-                customerPhone: phoneno
+                customerPhone: phoneno,
+                role : role,
             };
             console.log(customer);
-            axios.post( url + "/customers/addcustomer", customer)
+            axios.post( url + "/customers/register", customer)
             .then(() =>{
                navigate("/login");
             })
@@ -128,6 +130,29 @@ const Register = () =>{
                     </div>
                     </div>
 
+                    <div className="row">
+                        <div className="mb-3 col-6 px-5 text-center offset-3">
+                        <label htmlFor="role" className="form-label">
+                            Role
+                        </label>
+                        <select
+                            name="role"
+                            id="role"
+                            className="input-fields-mod form-control"
+                            onChange={(e) => {
+                            setrole(e.target.value);
+                            }}
+                        >
+                                <option value="" hidden>
+                                Choose Role
+                                </option>
+                                <option value="CUSTOMER">CUSTOMER</option>
+                                <option value="VENDOR">ADMIN</option>
+                        </select>
+                        </div>
+                        <div className="mb-3 col px-5"></div>
+                    </div>       
+
                     <div className="mb-3 col-6 px-5 text-center offset-3">
                     <button
                         type="submit"
@@ -137,7 +162,12 @@ const Register = () =>{
                     >
                     Register
                     </button>
+                    <p className="py-2">Already have an account?<a href="/login">Login</a></p>
+                    
+                       
+                    
                     </div>
+                    
                 </div>
                 </div>
             </div>
