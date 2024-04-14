@@ -3,7 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import './Register.css';
 import { useNavigate } from 'react-router-dom';
-
+import userValidation from "../validations/userValidation";
 import { url } from "./Common/constants";
 
 const Register = () =>{
@@ -14,13 +14,12 @@ const Register = () =>{
     const [password, setPassword] = useState("");
     const [phoneno, setPhoneno] = useState("");
     const [role, setrole] = useState("");
-
+    const [errors, setErrors] = useState({});
     const navigate = useNavigate();
 
     const handleSubmit = () =>{
-
-        if(password.length >= 8)
-        {
+        
+        
             const customer ={
                 customerFirstName: firstName,
                 customerLastName: lastName,
@@ -29,18 +28,25 @@ const Register = () =>{
                 customerPhone: phoneno,
                 role : role,
             };
-            console.log(customer);
-            axios.post( url + "/customers/register", customer)
-            .then(() =>{
-               navigate("/login");
-            })
-            .catch((error) => {
-                console.log("something wrong", error);
-            })
-        }
-        else{
 
-        }
+            const validationErrors = userValidation(customer);
+            setErrors(validationErrors);
+            
+            console.log(customer);
+            if (Object.keys(validationErrors).length === 0)
+            {
+                axios.post( url + "/customers/register", customer)
+                .then(() =>{
+                navigate("/login");
+                })
+                .catch((error) => {
+                    console.log("something wrong", error);
+                })
+            }
+            else{
+                console.log("problem", validationErrors);
+            }
+        
     }
     return(
         <div className="position-absolute top-50 start-50 translate-middle regback">
@@ -59,8 +65,10 @@ const Register = () =>{
                         value={firstName}
                         onChange={(e) => {
                             setFirstName(e.target.value);
+                            setErrors({ ...errors, firstName: "" });
                         }}
                         />
+                        {errors.firstName && <small className="text-danger float-right">{errors.firstName}</small>}
                     </div>
 
                     <div className="row">
@@ -75,8 +83,10 @@ const Register = () =>{
                             value={lastName}
                             onChange={(e) => {
                                 setLastName(e.target.value);
+                                setErrors({ ...errors, lastName: "" });
                             }}
-                        />
+                            />
+                            {errors.lastName && <small className="text-danger float-right">{errors.lastName}</small>}
                     </div>
                     </div>
 
@@ -92,8 +102,10 @@ const Register = () =>{
                         value={email}
                         onChange={(e) => {
                             setEmail(e.target.value);
+                            setErrors({ ...errors, email: "" });
                         }}
                         />
+                        {errors.email && <small className="text-danger float-right">{errors.email}</small>}
                     </div>
                     </div>
 
@@ -109,8 +121,10 @@ const Register = () =>{
                             value={password}
                             onChange={(e) => {
                                 setPassword(e.target.value);
+                                setErrors({ ...errors, password: "" });
                             }}
                             />
+                            {errors.password && <small className="text-danger float-right">{errors.password}</small>}
                     </div>
                     </div>
                     <div className="row">
@@ -125,8 +139,10 @@ const Register = () =>{
                             value={phoneno}
                             onChange={(e) => {
                             setPhoneno(e.target.value);
+                            setErrors({ ...errors, phoneno: "" });
                             }}
                             />
+                            {errors.phoneno && <small className="text-danger float-right">{errors.phoneno}</small>}
                     </div>
                     </div>
 
@@ -147,7 +163,7 @@ const Register = () =>{
                                 Choose Role
                                 </option>
                                 <option value="CUSTOMER">CUSTOMER</option>
-                                <option value="VENDOR">ADMIN</option>
+                                <option value="ADMIN">ADMIN</option>
                         </select>
                         </div>
                         <div className="mb-3 col px-5"></div>
@@ -158,7 +174,7 @@ const Register = () =>{
                         type="submit"
                         className="btn btn-dark"
                         onClick={handleSubmit}
-                        disabled={password.length >= 8 ? false : true}
+                        //disabled={password.length >= 8 ? false : true}
                     >
                     Register
                     </button>

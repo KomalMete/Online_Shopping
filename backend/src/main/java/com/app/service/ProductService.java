@@ -2,6 +2,8 @@ package com.app.service;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.app.dto.CartDto;
 import com.app.entity.Products;
 

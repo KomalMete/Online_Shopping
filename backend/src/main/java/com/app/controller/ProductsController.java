@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.app.dto.CartDto;
 import com.app.entity.Products;
@@ -30,11 +31,11 @@ public class ProductsController {
 	private ProductService productService;
 	
 	@PostMapping("/addproduct")
-	public String saveProduct(@RequestBody Products product)
+	public ResponseEntity<?> saveProduct(@RequestBody Products product)
 	{
-		return productService.addProduct(product);
+		//return productService.addProduct(product);
 		//return Response.success("product saved");
-		
+		return new ResponseEntity<>(productService.addProduct(product), HttpStatus.OK);
 	}
 	
 	@GetMapping

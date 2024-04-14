@@ -17,11 +17,12 @@ import Women from './Component/Electronics';
 import ProductDetails from './Component/ProductDetails';
 import HomeAndKitchen from './Component/HomeAndKitchen';
 import Cart from './Component/Cart';
-import AddressAndPayment from './Component/AddressAndPayment';
+import Address from './Component/Address';
 import Order from './Component/Order';
 import Products from './Component/Products';
 import AdminHome from './Component/AdminHome';
 import AdminNavbar from './Component/AdminNavbar';
+import SuccessPage from './Component/SuccessPage';
 
 function App() {
    
@@ -48,9 +49,10 @@ function App() {
           <Route path="/ab" element={<ProductDetails />}/>
           <Route exact path='/products/getproduct/:productId' element={<ProductDetails />}></Route>
           <Route path="/cart" element={<Cart />}/>
-          <Route path="/deliveryaddress" element={<AddressAndPayment />}/>
+          <Route path="/deliveryaddress" element={<Address />}/>
           <Route path="/order" element={<Order />}/>
           <Route exact path='/products/searchproduct/:pname' element={<Products />}></Route>
+          <Route path="/successpage" element={<SuccessPage />}/>
         </Routes>
       </div>
       </BrowserRouter>

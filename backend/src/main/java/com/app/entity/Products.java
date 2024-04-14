@@ -45,7 +45,9 @@ public class Products {
 	@Positive
 	private int quantity;
 	
-	
+	@Column(name = "image_url")
+	@NotEmpty(message = "cannot be empty")
+	private String imageUrl;
 	
 	@ManyToOne
 	@JoinColumn(name = "category_id")

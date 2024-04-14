@@ -71,7 +71,7 @@ const Electronics = () =>{
                             <div className="card " key={item.productId}>
                                 <div >
 
-                                <img src={Mobile} height={150}   className="card-img-top px-5" alt="..." />
+                                <img src={item.imageUrl} height={150}   className="card-img-top px-5" alt="..." />
                                     <div className="card-body">
                                         <h5 className="card-title">{item.productName}</h5>
                                       

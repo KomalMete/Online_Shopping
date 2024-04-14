@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.app.dto.CartDto;
 import com.app.entity.Cart;
@@ -32,6 +33,9 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private CategoryRepository categoryRepo;
 	
+	@Autowired 
+	private StorageService storageService;
+	
 	@Override
 	public String addProduct(Products product) {
 		// TODO Auto-generated method stub
@@ -50,8 +54,10 @@ public class ProductServiceImpl implements ProductService {
 		    }
 
 	        product.setCategory(category);
-		productRepo.save(product);
-		return "product saved";
+	        //String photo=storageService.store(pic);
+	        //product.setImageUrl(photo);
+	        productRepo.save(product);
+	        return "product saved";
 	}
 	
 	

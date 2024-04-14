@@ -1,0 +1,12 @@
+package com.app.service;
+
+import org.springframework.stereotype.Service;
+
+import lombok.Value;
+
+@Service
+public class StorageServiceImpl implements StorageService {
+
+	@Value("${disk.upload.basepath}")
+	private String BASEPATH;
+}

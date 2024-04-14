@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.dto.OrdersDto;
 import com.app.entity.Customer;
 import com.app.entity.Orders;
 import com.app.service.CustomerService;
@@ -40,9 +41,9 @@ public class OrderController {
 	}
 	
 	@PostMapping("/orderplace")
-	public ResponseEntity<?> placeOrder(@RequestBody Orders order, int addressId,  HttpServletRequest request)
+	public ResponseEntity<?> placeCustomerOrder(@RequestBody OrdersDto order,  HttpServletRequest request)
 	{
-		return new ResponseEntity<>(orderService.placeOrder(order, addressId,  request.getUserPrincipal().getName()),HttpStatus.OK);
+		return new ResponseEntity<>(orderService.placeOrder(order,  request.getUserPrincipal().getName()),HttpStatus.OK);
 	}
 	
 }

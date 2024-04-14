@@ -13,20 +13,37 @@ const AddProduct = () =>{
     const [price, setPrice] = useState("");
     const [quantity, setQuantity] = useState("");
     const [category, setcategory] = useState("");
-    const [imageUel, setImageUrl] = useState("");
-
+    const [imageUrl, setImageUrl] = useState("");
+    const [selectedPhoto,setSelectedPhoto]=useState(null)
     const navigate = useNavigate();
 
+    const handleFileInput=e=>{
+      setSelectedPhoto(e.target.files[0])
+    }
     const HandleAddProduct = () =>{
-        const product ={
-          brand :brand,
-          productName :name,
-          productPrice :parseInt(price),
-          quantity :parseInt(quantity),
-          category :category
-        };
-        console.log(product);
-        axios.post(url + "/products/addproduct" ,product)
+        // const product ={
+        //   brand :brand,
+        //   productName :name,
+        //   productPrice :parseInt(price),
+        //   quantity :parseInt(quantity),
+        //   category :category,
+        //   selectedPhoto :selectedPhoto
+        // };
+
+        const formData = new FormData();
+        formData.append("brand", brand);
+        formData.append("productName", name);
+        formData.append("productPrice", parseInt(price));
+        formData.append("quantity", parseInt(quantity));
+        formData.append("category", category);
+        formData.append("image", selectedPhoto);
+        //console.log(product);
+        axios.post(url + "/products/addproduct" ,JSON.stringify(formData),  {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        
         .then((response) =>{
 
             console.log("product details", response.data);
@@ -135,6 +152,19 @@ const AddProduct = () =>{
               </div>
             </div>
         
+            <div className="mb-3 col-6 px-5 text-center offset-3">
+              <label htmlFor="url" className="form-label">
+                Image Url{" "}
+              </label>
+              <input
+                type="file"
+                className="form-control"
+                id="url"
+                value={imageUrl}
+                onChange={handleFileInput}
+              />
+            </div>     
+
             <button
               type="submit"
               className="btn btn-primary"
