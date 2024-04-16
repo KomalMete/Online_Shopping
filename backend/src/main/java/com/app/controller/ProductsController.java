@@ -1,10 +1,12 @@
 package com.app.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -30,12 +32,15 @@ public class ProductsController {
 	@Autowired
 	private ProductService productService;
 	
+	@Value("${disk.upload.basepath}")
+	private String BASEPATH;
+	
 	@PostMapping("/addproduct")
-	public ResponseEntity<?> saveProduct(@RequestBody Products product)
+	public ResponseEntity<?> saveProduct(@RequestBody Products product,MultipartFile pic) throws IOException
 	{
 		//return productService.addProduct(product);
 		//return Response.success("product saved");
-		return new ResponseEntity<>(productService.addProduct(product), HttpStatus.OK);
+		return new ResponseEntity<>(productService.addProduct(product,pic), HttpStatus.OK);
 	}
 	
 	@GetMapping

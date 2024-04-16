@@ -13,12 +13,12 @@ const AddProduct = () =>{
     const [price, setPrice] = useState("");
     const [quantity, setQuantity] = useState("");
     const [category, setcategory] = useState("");
-    const [imageUrl, setImageUrl] = useState("");
-    const [selectedPhoto,setSelectedPhoto]=useState(null)
+    //const [imageUrl, setImageUrl] = useState("");
+    const [imageUrl,setimageUrl]=useState(null)
     const navigate = useNavigate();
 
     const handleFileInput=e=>{
-      setSelectedPhoto(e.target.files[0])
+      setimageUrl(e.target.files[0])
     }
     const HandleAddProduct = () =>{
         // const product ={
@@ -36,14 +36,9 @@ const AddProduct = () =>{
         formData.append("productPrice", parseInt(price));
         formData.append("quantity", parseInt(quantity));
         formData.append("category", category);
-        formData.append("image", selectedPhoto);
+        formData.append("image", imageUrl);
         //console.log(product);
-        axios.post(url + "/products/addproduct" ,JSON.stringify(formData),  {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-        
+        axios.post(url + "/products/addproduct" ,formData)
         .then((response) =>{
 
             console.log("product details", response.data);

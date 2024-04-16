@@ -1,5 +1,6 @@
 package com.app.service;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -10,7 +11,7 @@ import com.app.entity.Products;
 
 public interface ProductService {
 
-	String addProduct(Products product);
+	String addProduct(Products product,MultipartFile pic) throws IOException;
 
 	List<Products> getAllProducts();
 

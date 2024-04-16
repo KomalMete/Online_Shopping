@@ -1,9 +1,11 @@
 package com.app.service;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -36,8 +38,11 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired 
 	private StorageService storageService;
 	
+	@Value("${disk.upload.basepath}")
+	private String BASEPATH;
+	
 	@Override
-	public String addProduct(Products product) {
+	public String addProduct(Products product,MultipartFile pic) throws IOException {
 		// TODO Auto-generated method stub
 		 Category category = product.getCategory();
 		 
@@ -54,8 +59,8 @@ public class ProductServiceImpl implements ProductService {
 		    }
 
 	        product.setCategory(category);
-	        //String photo=storageService.store(pic);
-	        //product.setImageUrl(photo);
+	        String photo=storageService.uploadImage(BASEPATH, pic);
+	        product.setImageUrl(photo);
 	        productRepo.save(product);
 	        return "product saved";
 	}

@@ -2,6 +2,9 @@ package com.app.service;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -18,18 +21,36 @@ public class StorageServiceImpl implements StorageService {
 	private String BASEPATH;
 	
 	@Override
-	public String store(MultipartFile file) {
-		System.out.println(file.getOriginalFilename());
-		String ext=file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
-		System.out.println(ext);
-		String fileName = UUID.randomUUID().toString().replaceAll("-", "")+ext;
-		File filePath = new File(BASEPATH, fileName);
-		try(FileOutputStream out = new FileOutputStream(filePath)) {
-			FileCopyUtils.copy(file.getInputStream(), out);
-			return fileName;
-		} catch (Exception e) {
-			e.printStackTrace();
+	public String uploadImage(String path, MultipartFile file) throws IOException {
+		
+		
+		//get file name
+		String name=file.getOriginalFilename();
+				
+		//String fileName = UUID.randomUUID().toString().replaceAll("-", "")+ext;
+		
+		//Fullpath
+		String filePath = path+ File.separator+name;
+		
+		//create folder if not present
+		File f = new File(path);
+		if(!f.exists())
+		{
+			f.mkdir();
 		}
-		return null;
+		
+		//file copy
+		Files.copy(file.getInputStream(), Paths.get(filePath));
+		
+		return name;
+		
+//		try(FileOutputStream out = new FileOutputStream(filePath)) {
+//			FileCopyUtils.copy(file.getInputStream(), out);
+//			return fileName;
+//		} catch (Exception e) {
+//			 //log.error("Failed to store file", e);
+//			    throw new RuntimeException("Failed to store file", e);
+//		}
+		//return null;
 	}
 }
